@@ -1,0 +1,9 @@
+language: node_js
+node_js: node
+deploy:
+  provider: heroku
+  api_key:
+    secure: RFLXepxgSGBkvOu8VJZrUZ+xzE514Dr/WotBMPyJaf9jH8x8OZgqay9tdPgBeO9sayvn8J8AQJ6O3oWKG31mI3gotNcDkjh0GMlN5KO/MoRBzcYDS7iCqQtgbMIBMzRZ3BhyENq4ig29DzZyeAMJz2vSPDCBjS6mZkVx87fWqfwVXHPr8+4pydB39Q8LhIfJ2/dsc3lS5MAWFQ2ASRELBjeKY7wErbPZicEPqJGW6iclrPBM6pDRDiuLyFwkAigooC3qsd/Q3zcmMUmKswRs7+y0rRDkNSbxMSXWjH/9KQGEMt3zHY1xT/HDF+9SQiI39MuCJp/3hGDGvZiFllyideeKLitg+sXTrMdZbKWghA8H8+QGjZx7MDWxYUgpRsGFiLoGyxy5pgRnHnLRbjSh3AFTOInTIoDrFF+ucjqekHIxUvweswB2Vl12GdFaJ36OXHCR3GE/YLP070c/mH5bZxWHvwDkfMS87ORSL/lS3jzP23f6eLec6gVXiZsCmxh7UjKwH70R9VbLOBotZw1aCs6Iee5zlGkibP8BaaRnank50zHxKrrNOT7HNVd/nppqRMiDFwl5m1sx8dgZQTOHUPxE+HuRZ6HTFo82KdQ/sxKiWGvSFZC7q9vvFsYFdEYlNtz3zfwAwobH2P2x+rgCSPlb1zaDnrEB5FWi1yWagzw=
+  app: adopt-list
+  on:
+    repo: mikebcbc/adopt-list
