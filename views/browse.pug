@@ -1,7 +1,10 @@
 extends layout
 
 block content
+	h2= title
 	.adoptable-pets
-		ul
-			each pet in data
-				li= pet.name.$t
+		each pet in data
+			.pet
+				.photo
+					img(src=pet.media.photos.photo[0].$t)
+				.name= pet.name.$t
