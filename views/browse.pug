@@ -1,0 +1,7 @@
+extends layout
+
+block content
+	.adoptable-pets
+		ul
+			each pet in data
+				li= pet.name.$t
