@@ -1,0 +1,15 @@
+extends layout
+
+block content
+	h2= title
+	.adoptable-pets
+		each pet in data
+			.pet
+				.photo
+					img(src=pet.media.photos.photo[0].$t)
+				.name= pet.name.$t
+				.description
+					p= pet.description.$t
+				.action
+					a(href="") ADD TO LIST
+					a(href="") CONTACT SHELTER

@@ -1,9 +1,15 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+
+const { data } = require('../public/javascripts/client.js');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get('/', function(req, res) {
+  res.render('index', { text: 'Hello World' });
 });
+
+router.get('/browse', function(req, res) {
+	res.render('browse', { data: data, title: 'Browse' });
+})
 
 module.exports = router;
