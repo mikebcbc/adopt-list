@@ -2,7 +2,7 @@ const express = require('express');
 const rp = require('request-promise-native');
 const router = express.Router();
 
-/* GET users listing. */
+/* GET all pets */
 router.get('/', function(req, res) {
 	const petOptions = {
 		uri: 'http://api.petfinder.com/pet.find',
@@ -15,8 +15,10 @@ router.get('/', function(req, res) {
 	}
 	rp(petOptions)
 		.then(function(pets) {
-			console.log(pets.petfinder.pets);
 			res.send(pets.petfinder.pets.pet);
+		})
+		.catch(function(err) {
+			res.send(err);
 		})
 });
 
