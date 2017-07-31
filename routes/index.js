@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
-
-const { data } = require('../public/javascripts/client.js');
+const rp = require('request-promise-native');
 
 /* GET home page. */
 router.get('/', function(req, res) {
@@ -9,7 +8,10 @@ router.get('/', function(req, res) {
 });
 
 router.get('/browse', function(req, res) {
-	res.render('browse', { data: data, title: 'Browse' });
+	rp({uri: 'http://localhost:3000/pets', json: true})
+	  .then(function(pets) {
+	    res.render('browse', {data: pets, title: 'Browse' });
+	  });
 })
 
 module.exports = router;
