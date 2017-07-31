@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto");
 body {
   padding: 20px 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
@@ -15,9 +16,31 @@ header {
 
 .adoptable-pets {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center; }
   .adoptable-pets .pet {
+    position: relative;
     border: 1px solid black;
-    margin: 0 10px; }
+    margin: 10px; }
+    .adoptable-pets .pet .photo img {
+      width: 345px;
+      height: 175px; }
+    .adoptable-pets .pet .photo:after {
+      content: "";
+      display: block;
+      background-color: rgba(0, 0, 0, 0.2);
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0; }
+    .adoptable-pets .pet .name {
+      position: absolute;
+      font-family: "Roboto", sans-serif;
+      color: #fff;
+      font-size: 24px;
+      text-overflow: ellipsis;
+      top: 135px;
+      padding: 0 15px; }
 
 /*# sourceMappingURL=style.css.map */
