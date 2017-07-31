@@ -1,4 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto");
+html {
+  background-color: #00BCD4; }
+
 body {
   padding: 20px 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
@@ -20,20 +23,25 @@ header {
   justify-content: center; }
   .adoptable-pets .pet {
     position: relative;
-    border: 1px solid black;
-    margin: 10px; }
-    .adoptable-pets .pet .photo img {
+    margin: 10px;
+    width: 345px; }
+    .adoptable-pets .pet .photo {
+      position: relative;
       width: 345px;
-      height: 175px; }
-    .adoptable-pets .pet .photo:after {
-      content: "";
-      display: block;
-      background-color: rgba(0, 0, 0, 0.2);
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0; }
+      height: 175px;
+      overflow: hidden; }
+      .adoptable-pets .pet .photo img {
+        min-width: 100%;
+        min-height: 100%; }
+      .adoptable-pets .pet .photo:after {
+        content: "";
+        display: block;
+        background-color: rgba(0, 0, 0, 0.2);
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0; }
     .adoptable-pets .pet .name {
       position: absolute;
       font-family: "Roboto", sans-serif;
@@ -42,5 +50,13 @@ header {
       text-overflow: ellipsis;
       top: 135px;
       padding: 0 15px; }
+    .adoptable-pets .pet .description {
+      padding: 15px;
+      background: white; }
+      .adoptable-pets .pet .description p {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical; }
 
 /*# sourceMappingURL=style.css.map */

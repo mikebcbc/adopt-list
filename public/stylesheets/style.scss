@@ -3,6 +3,10 @@
 // VARIABLES
 $heading-font: 'Roboto', sans-serif;
 
+html {
+	background-color: #00BCD4;
+}
+
 body {
 	padding: 20px 50px;
 	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -30,12 +34,16 @@ header {
 	justify-content: center;
 	.pet {
 		position: relative;
-		border: 1px solid black;
 		margin: 10px;
+		width: 345px;
 		.photo {
+			position: relative;
+			width: 345px;
+			height: 175px;
+			overflow: hidden;
 			img {
-				width: 345px;
-				height: 175px;
+				min-width: 100%;
+				min-height: 100%;
 			}
 			&:after {
 				content: "";
@@ -56,6 +64,16 @@ header {
 			text-overflow: ellipsis;
 			top: 135px;
 			padding: 0 15px;
+		}
+		.description {
+ 			padding: 15px;
+ 			background: white;
+			p {
+				overflow: hidden;
+			  display: -webkit-box;
+			  -webkit-line-clamp: 2;
+			  -webkit-box-orient: vertical;
+			}
 		}
 	}
 }
