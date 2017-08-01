@@ -15,7 +15,16 @@ router.get('/', function(req, res) {
 	}
 	rp(petOptions)
 		.then(function(pets) {
-			res.send(pets.petfinder.pets.pet);
+			const modifiedPets = pets.petfinder.pets.pet.map((pet)=> {
+				pet.media.photos.photo = pet.media.photos.photo.map((photo)=> {
+					return photo.$t.substring(0, photo.$t.indexOf('?'));
+				})
+				.filter((photo, index, arr)=> {
+					return arr.indexOf(photo) == index;
+				});
+				return pet;
+			});
+			res.send(modifiedPets);
 		})
 		.catch(function(err) {
 			res.send(err);
