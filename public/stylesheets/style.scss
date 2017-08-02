@@ -44,8 +44,7 @@ header {
 			height: 175px;
 			overflow: hidden;
 			img {
-				min-width: 100%;
-				min-height: 100%;
+				width: 100%;
 			}
 			&:after {
 				content: "";

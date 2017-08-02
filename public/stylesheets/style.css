@@ -33,8 +33,7 @@ header {
       height: 175px;
       overflow: hidden; }
       .adoptable-pets .pet .photo img {
-        min-width: 100%;
-        min-height: 100%; }
+        width: 100%; }
       .adoptable-pets .pet .photo:after {
         content: "";
         display: block;

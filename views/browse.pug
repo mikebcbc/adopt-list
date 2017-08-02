@@ -6,7 +6,7 @@ block content
 		each pet in data
 			.pet
 				.photo
-					img(src=pet.media.photos.photo[0].$t)
+					img(src=pet.media.photos.photo[0])
 				.name= pet.name.$t
 				.description
 					p= pet.description.$t
