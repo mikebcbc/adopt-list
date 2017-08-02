@@ -7,6 +7,7 @@
 var app = require('../app');
 var debug = require('debug')('adopt-list:server');
 var http = require('http');
+var mongoose = require('mongoose');
 
 /**
  * Get port from environment and store in Express.
@@ -22,10 +23,25 @@ app.set('port', port);
 var server = http.createServer(app);
 
 /**
- * Listen on provided port, on all network interfaces.
- */
+* Connect to DB and listen on port.
+*/
 
-server.listen(port);
+new Promise((resolve, reject) => {
+  mongoose.connect('mongodb://localhost/adopt-list', err => {
+    if(err) {
+      return reject(err);
+    }
+    server.listen(port, () => {
+      console.log(`We on port ${port}`);
+      resolve();
+    })
+    .on('error', err => {
+      mongoose.disconnect();
+      reject(err);
+    });
+  });
+});
+
 server.on('error', onError);
 server.on('listening', onListening);
 
