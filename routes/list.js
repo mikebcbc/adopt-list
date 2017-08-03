@@ -12,8 +12,8 @@ router.post('/', function(req, res) {
 		name: req.body.name,
 		description: req.body.description,
 		contactInfo: {
-			phone: req.body.phone,
-			email: req.body.email
+			phone: req.body.contactInfo.phone,
+			email: req.body.contactInfo.email
 		}
 	})
 	.then(list => res.status(201).json(list))
