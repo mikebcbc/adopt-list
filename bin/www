@@ -26,19 +26,17 @@ var server = http.createServer(app);
 * Connect to DB and listen on port.
 */
 
-new Promise((resolve, reject) => {
-  mongoose.connect('mongodb://localhost/adopt-list', err => {
-    if(err) {
-      return reject(err);
-    }
-    server.listen(port, () => {
-      console.log(`We on port ${port}`);
-      resolve();
-    })
-    .on('error', err => {
-      mongoose.disconnect();
-      reject(err);
-    });
+console.log(process.env.DATABASE_URL);
+
+mongoose.connect(process.env.DATABASE_URL || 'mongodb://localhost/adopt-list', err => {
+  // if(err) {
+  //   return reject(err);
+  // }
+  server.listen(port, () => {
+    console.log(`We on port ${port}`);
+  })
+  .on('error', err => {
+    mongoose.disconnect();
   });
 });
 

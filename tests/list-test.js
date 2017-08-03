@@ -2,10 +2,11 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 const faker = require('faker');
 const mongoose = require('mongoose');
+const {List} = require('../models.js');
 
 const should = chai.should();
 
-const app = require('../app');
+const app = require('../bin/www');
 
 chai.use(chaiHttp);
 
@@ -20,7 +21,19 @@ function generateData() {
 	}
 }
 
+function destroyDb() {
+	return mongoose.connection.dropDatabase();
+}
+
 describe('List Tests', function() {
+	afterEach(function() {
+		return destroyDb();
+	});
+
+	after(function() {
+		return mongoose.connection.close();
+	})
+
 	describe('POST endpoint', function() {
 		it('should add a pet to the list', function() {
 				const newPet = generateData();
@@ -36,7 +49,7 @@ describe('List Tests', function() {
 						res.body.description.should.equal(newPet.description);
 						res.body.contactInfo.phone.should.equal(newPet.contactInfo.phone);
 						res.body.contactInfo.email.should.equal(newPet.contactInfo.email);
-						return Post.findById(res.body.id);
+						return List.findById(res.body._id);
 					})
 					.then(function(pet) {
 						pet.name.should.equal(newPet.name);
