@@ -4,10 +4,11 @@
  * Module dependencies.
  */
 
-var app = require('../app');
-var debug = require('debug')('adopt-list:server');
-var http = require('http');
-var mongoose = require('mongoose');
+const app = require('../app');
+const debug = require('debug')('adopt-list:server');
+const http = require('http');
+const mongoose = require('mongoose');
+const winston = require('winston');
 
 /**
  * Get port from environment and store in Express.
@@ -33,7 +34,7 @@ mongoose.connect(process.env.DATABASE_URL || 'mongodb://localhost/adopt-list', e
   //   return reject(err);
   // }
   server.listen(port, () => {
-    console.log(`We on port ${port}`);
+    winston.info(`We on port ${port}`);
   })
   .on('error', err => {
     mongoose.disconnect();
