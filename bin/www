@@ -27,8 +27,6 @@ var server = http.createServer(app);
 * Connect to DB and listen on port.
 */
 
-console.log(process.env.DATABASE_URL);
-
 mongoose.connect(process.env.DATABASE_URL || 'mongodb://localhost/adopt-list', err => {
   // if(err) {
   //   return reject(err);
