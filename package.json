@@ -5,24 +5,28 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon ./bin/www",
-    "test": "mocha ./tests"
+    "test": "DATABASE_URL=mongodb://localhost/test-adopt-list mocha ./tests"
   },
   "dependencies": {
     "body-parser": "~1.17.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
     "express": "~4.15.2",
+    "mongoose": "^4.11.5",
     "morgan": "~1.8.1",
     "node-sass-middleware": "0.9.8",
+    "nodemon": "^1.11.0",
     "pug": "~2.0.0-beta11",
     "request": "^2.81.0",
     "request-promise-native": "^1.0.4",
-    "serve-favicon": "~2.4.2"
+    "serve-favicon": "~2.4.2",
+    "winston": "^2.3.1"
   },
   "devDependencies": {
     "chai": "^4.1.0",
     "chai-http": "^3.0.0",
     "dotenv": "^4.0.0",
+    "faker": "^4.1.0",
     "mocha": "^3.4.2"
   }
 }
