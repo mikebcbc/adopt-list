@@ -5,6 +5,7 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const sassMiddleware = require('node-sass-middleware');
+const passport = require('passport');
 
 require('dotenv').config();
 
@@ -12,6 +13,8 @@ const index = require('./routes/index');
 const pets = require('./routes/pets');
 const list = require('./routes/list');
 const users = require('./routes/users');
+
+const {jwtAuth} = require('./auth/strategies');
 
 const app = express();
 
@@ -32,6 +35,9 @@ app.use(sassMiddleware({
   sourceMap: true
 }));
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(passport.initialize());
+passport.use(jwtAuth);
 
 app.use('/', index);
 app.use('/pets', pets);
