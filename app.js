@@ -11,6 +11,7 @@ require('dotenv').config();
 const index = require('./routes/index');
 const pets = require('./routes/pets');
 const list = require('./routes/list');
+const users = require('./routes/users');
 
 const app = express();
 
@@ -35,6 +36,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/pets', pets);
 app.use('/list', list);
+app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
