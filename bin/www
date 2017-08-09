@@ -28,9 +28,9 @@ var server = http.createServer(app);
 */
 
 mongoose.connect(process.env.DATABASE_URL || 'mongodb://localhost/adopt-list', err => {
-  // if(err) {
-  //   return reject(err);
-  // }
+  if(err) {
+    winston.error(err);
+  }
   server.listen(port, () => {
     winston.info(`We on port ${port}`);
   })

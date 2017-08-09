@@ -2,8 +2,6 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 
-mongoose.Promise = global.Promise;
-
 const {List} = require('../models');
 
 /* POST pet to list */

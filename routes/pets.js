@@ -28,7 +28,7 @@ router.get('/', function(req, res) {
 		})
 		.catch(function(err) {
 			res.send(err);
-		})
+		});
 });
 
 module.exports = router;

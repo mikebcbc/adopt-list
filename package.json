@@ -8,6 +8,7 @@
     "test": "DATABASE_URL=mongodb://localhost/test-adopt-list mocha ./tests"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "~1.17.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
@@ -17,6 +18,7 @@
     "morgan": "~1.8.1",
     "node-sass-middleware": "0.9.8",
     "nodemon": "^1.11.0",
+    "passport": "^0.3.2",
     "pug": "~2.0.0-beta11",
     "request": "^2.81.0",
     "request-promise-native": "^1.0.4",

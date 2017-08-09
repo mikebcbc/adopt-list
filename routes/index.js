@@ -8,7 +8,7 @@ router.get('/', function(req, res) {
 });
 
 router.get('/browse', function(req, res) {
-	rp({uri: 'https://adopt-list.herokuapp.com/pets', json: true}) // Change request to client side (jquery)
+	rp({uri: 'http://localhost:3000/pets', json: true}) // Change request to client side (jquery)
 	  .then(function(pets) {
 	    res.render('browse', {data: pets, title: 'Browse' });
 	  });

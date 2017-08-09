@@ -18,7 +18,7 @@ function addToList() {
 		const pet = getPetData($(this).closest(".pet"));
 		$.ajax({
 			type: "POST",
-			url: "https://adopt-list.herokuapp.com/list",
+			url: "http://localhost:3000/list",
 			data: JSON.stringify(pet),
 			dataType: "json",
 			contentType: "application/json"
