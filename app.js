@@ -13,8 +13,9 @@ const index = require('./routes/index');
 const pets = require('./routes/pets');
 const list = require('./routes/list');
 const users = require('./routes/users');
+const auth = require('./routes/auth');
 
-const {jwtAuth} = require('./auth/strategies');
+const {jwtAuth, basicAuth} = require('./auth/strategies');
 
 const app = express();
 
@@ -37,12 +38,14 @@ app.use(sassMiddleware({
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(passport.initialize());
+passport.use(basicAuth);
 passport.use(jwtAuth);
 
 app.use('/', index);
 app.use('/pets', pets);
 app.use('/list', list);
 app.use('/users', users);
+app.use('/auth', auth);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
