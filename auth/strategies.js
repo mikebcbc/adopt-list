@@ -60,7 +60,14 @@ const basicAuth = new BasicStrategy((username, password, callback) => {
 
 
 const jwtAuth = new JwtStrategy(opts, (payload, done) => {
-	console.log('hi');
+	User.findOne({id: payload.sub}, (err, user) => {
+		if (err) {
+			return done(err, false);
+		}
+		if (user) {
+			return done(null, user);
+		}
+	})
 	return done(null, true);
 });
 
