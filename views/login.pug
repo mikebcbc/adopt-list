@@ -4,12 +4,22 @@ block content
 	.login-form
 		ul.tab-group
 			li.tab.active
-				a(href="#signup") Sign Up
-			li.tab
 				a(href="#login") Log In
+			li.tab
+				a(href="#register") Register
 		.tab-content
-			#signup
-				h1 Sign Up
+			#login
+				h1 Welcome Back!
+				form(method='POST' action='/login')
+					.field-wrap
+						label Email Address
+						input(type="email" required)
+					.field-wrap
+						label Password
+						input(type="password" required)
+					button.submit Login
+			#register
+				h1 Register
 				form(method='POST' action='/users')
 					.top-row
 						.field-wrap
@@ -25,13 +35,5 @@ block content
 						label Password
 						input(type="password" required)
 					button.submit Get Started
-			#login
-				h1 Welcome Back!
-				form(method='POST' action='/login')
-					.field-wrap
-						label Email Address
-						input(type="email" required)
-					.field-wrap
-						label Password
-						input(type="password" required)
-					button.submit Login
+	script(src='//code.jquery.com/jquery-3.2.1.min.js')
+	script(src="../javascripts/login-client.js")

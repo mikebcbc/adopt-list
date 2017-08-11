@@ -3,8 +3,14 @@
 // VARIABLES
 $main-font: 'Roboto', sans-serif;
 
+* {
+	box-sizing: border-box;
+}
+
 html {
-	background-color: #00BCD4;
+	background: #74ebd5;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #ACB6E5, #74ebd5);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #ACB6E5, #74ebd5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 body {
@@ -93,4 +99,123 @@ header {
 // LOGIN STYLES
 
 .login-form {
+	background: rgba(#13232f, .9);
+	padding: 40px;
+	max-width: 600px;
+	margin: 40px auto;
+	border-radius: 5px;
+	box-shadow: 0 4px 10px 4px rgba(#13232f, .3);
+	.tab-group {
+		list-style: none;
+		padding: 0;
+		margin: 0 0 40px 0;
+		&:after {
+			content: "";
+			display: table;
+			clear: both;
+		}
+		.tab { 
+			a {
+				display: block;
+				text-decoration: none;
+				padding: 15px;
+				background: rgba(lightgrey, .25);
+				color: lightgrey;
+				font-size: 20px;
+				float: left;
+				width: 50%;
+				text-align: center;
+				cursor: pointer;
+				transition: .5s ease;
+				&:hover {
+					background: #11775b;
+					color: white;
+				}
+			}
+			&.active a {
+				background: #1ab188;
+				color: white;
+			}
+		}
+	}
+	.tab-content {
+		> div:last-child {
+			display: none;
+		}
+		h1 {
+			text-align: center;
+			color: white;
+			margin: 0 0 40px;
+		}
+		.top-row {
+			&:after {
+				content: "";
+				display: table;
+				clear: both;
+			}
+			> div {
+				float: left;
+				width: 48%;
+				margin-right: 4%;
+				&:last-child {
+					margin: 0;
+				}
+			}
+		}
+		.field-wrap {
+			position: relative;
+			margin-bottom: 40px;
+			label {
+				position: absolute;
+				transform: translateY(6px);
+				left: 13px;
+				color: rgba(#ffffff, 0.5);
+				transition: all 0.25s ease;
+				-webkit-backface-visibility: hidden;
+				pointer-events: none;
+				font-size: 22px;
+				&.active {
+					transform: translateY(50px);
+					left: 2px;
+					font-size: 14px;
+				}
+				&.highlight {
+					color: white;
+				}
+			}
+			input {
+				font-size: 22px;
+				display: block;
+				width: 100%;
+				height: 100%;
+				padding: 5px 10px;
+				background: none;
+				border: 1px solid lightgrey;
+				color: white;
+				transition: border-color .25s ease, box-shadow .25s ease;
+				&:focus {
+					outline: 0;
+					border-color: green;
+				}
+			}
+		}
+		.submit {
+		  border: 0;
+		  outline: none;
+		  border-radius: 0;
+		  width: 100%;
+		  padding: 15px 0;
+		  font-size: 2rem;
+		  font-weight: bold;
+		  text-transform: uppercase;
+		  letter-spacing: .1em;
+		  background: green;
+		  color: white;
+		  transition: all.5s ease;
+		  -webkit-appearance: none;
+		  &:hover, &:focus {
+		    background: black;
+		  }
+		}
+	}
 }

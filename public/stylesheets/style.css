@@ -1,6 +1,14 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto");
+* {
+  box-sizing: border-box; }
+
 html {
-  background-color: #00BCD4; }
+  background: #74ebd5;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #ACB6E5, #74ebd5);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #ACB6E5, #74ebd5);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ }
 
 body {
   padding: 20px 50px;
@@ -68,5 +76,102 @@ header {
         text-decoration: none;
         color: #FF1744;
         font-weight: bold; }
+
+.login-form {
+  background: rgba(19, 35, 47, 0.9);
+  padding: 40px;
+  max-width: 600px;
+  margin: 40px auto;
+  border-radius: 5px;
+  box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3); }
+  .login-form .tab-group {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 40px 0; }
+    .login-form .tab-group:after {
+      content: "";
+      display: table;
+      clear: both; }
+    .login-form .tab-group .tab a {
+      display: block;
+      text-decoration: none;
+      padding: 15px;
+      background: rgba(211, 211, 211, 0.25);
+      color: lightgrey;
+      font-size: 20px;
+      float: left;
+      width: 50%;
+      text-align: center;
+      cursor: pointer;
+      transition: .5s ease; }
+      .login-form .tab-group .tab a:hover {
+        background: #11775b;
+        color: white; }
+    .login-form .tab-group .tab.active a {
+      background: #1ab188;
+      color: white; }
+  .login-form .tab-content > div:last-child {
+    display: none; }
+  .login-form .tab-content h1 {
+    text-align: center;
+    color: white;
+    margin: 0 0 40px; }
+  .login-form .tab-content .top-row:after {
+    content: "";
+    display: table;
+    clear: both; }
+  .login-form .tab-content .top-row > div {
+    float: left;
+    width: 48%;
+    margin-right: 4%; }
+    .login-form .tab-content .top-row > div:last-child {
+      margin: 0; }
+  .login-form .tab-content .field-wrap {
+    position: relative;
+    margin-bottom: 40px; }
+    .login-form .tab-content .field-wrap label {
+      position: absolute;
+      transform: translateY(6px);
+      left: 13px;
+      color: rgba(255, 255, 255, 0.5);
+      transition: all 0.25s ease;
+      -webkit-backface-visibility: hidden;
+      pointer-events: none;
+      font-size: 22px; }
+      .login-form .tab-content .field-wrap label.active {
+        transform: translateY(50px);
+        left: 2px;
+        font-size: 14px; }
+      .login-form .tab-content .field-wrap label.highlight {
+        color: white; }
+    .login-form .tab-content .field-wrap input {
+      font-size: 22px;
+      display: block;
+      width: 100%;
+      height: 100%;
+      padding: 5px 10px;
+      background: none;
+      border: 1px solid lightgrey;
+      color: white;
+      transition: border-color .25s ease, box-shadow .25s ease; }
+      .login-form .tab-content .field-wrap input:focus {
+        outline: 0;
+        border-color: green; }
+  .login-form .tab-content .submit {
+    border: 0;
+    outline: none;
+    border-radius: 0;
+    width: 100%;
+    padding: 15px 0;
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    background: green;
+    color: white;
+    transition: all 0.5s ease;
+    -webkit-appearance: none; }
+    .login-form .tab-content .submit:hover, .login-form .tab-content .submit:focus {
+      background: black; }
 
 /*# sourceMappingURL=style.css.map */
