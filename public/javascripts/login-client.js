@@ -41,3 +41,21 @@ $('.tab a').on('click', function (e) {
   $(target).fadeIn(600);
   
 });
+
+$('.login').submit(function(e) {
+  e.preventDefault();
+  const username = $("input#username").val();
+  const password = $("input#password").val(); 
+  $.ajax
+  ({
+    type: "POST",
+    url: "/auth/login",
+    dataType: 'json',
+    beforeSend: function (xhr) {
+      xhr.setRequestHeader('Authorization', 'Basic ' + btoa(username + ":" + password))
+    },
+    success: function (){
+    // redirect, etc.
+    }
+});
+})

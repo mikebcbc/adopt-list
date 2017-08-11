@@ -12,22 +12,7 @@ const opts = {
 	algorithms: ['HS256']
 };
 
-// const jwtAuth = new JwtStrategy(opts, (payload, done) => {
-// 	User
-// 	.findOne({id: payload.sub})
-// 	.then(err, user) => {
-// 		if (err) {
-// 			return Promise.reject({
-// 				reason: 'LoginError',
-// 				message: 'Incorrect username or password'
-// 			});
-// 		}
-// 		return Promise.resolve();
-// 	}
-// })
-
 const basicAuth = new BasicStrategy((username, password, callback) => {
-  console.log('hello');
   let user;
   User
     .findOne({username: username})

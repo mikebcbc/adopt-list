@@ -10,13 +10,13 @@ block content
 		.tab-content
 			#login
 				h1 Welcome Back!
-				form(method='POST' action='/login')
+				form(class="login")
 					.field-wrap
 						label Email Address
-						input(type="email" required)
+						input(type="email" required name="username" id="username")
 					.field-wrap
 						label Password
-						input(type="password" required)
+						input(type="password" required name="password" id="password")
 					button.submit Login
 			#register
 				h1 Register
