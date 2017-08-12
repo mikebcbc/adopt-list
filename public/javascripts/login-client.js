@@ -51,11 +51,17 @@ $('.login').submit(function(e) {
     type: "POST",
     url: "/auth/login",
     dataType: 'json',
-    beforeSend: function (xhr) {
-      xhr.setRequestHeader('Authorization', 'Basic ' + btoa(username + ":" + password))
+    headers: {
+      "Authorization": 'Basic ' + btoa(username + ":" + password)
     },
-    success: function (){
-    // redirect, etc.
+    success: function (tkn) {
+      if (!tkn.authToken) {
+        console.log('nope.');
+        // Notify user that account is incorrect
+      } else {
+        console.log(tkn);
+        // Save token to local storage and redirect
+      }
     }
 });
 })

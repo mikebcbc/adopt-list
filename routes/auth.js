@@ -12,11 +12,28 @@ const createAuthToken = user => {
   });
 };
 
-router.post('/login',
-  passport.authenticate('basic', {session: false}),
-  (req, res) => {
-    const authToken = createAuthToken(req.user.apiRepr());
-    res.json({authToken});
+// router.post('/login',
+//   passport.authenticate('basic', {session: false}),
+//   (req, res) => {
+//     const authToken = createAuthToken(req.user.apiRepr());
+//     res.json({authToken});
+//   }
+// );
+
+router.post('/login', (req, res) => {
+    passport.authenticate('basic', {session: false}, function(err, user, info) {
+      console.log(user);
+      console.log(info);
+      console.log(err);
+      if (err) {
+        return res.json({"message": 'err1' + err});
+      }
+      if (!user) {
+        return res.json({"message": 'User does not exist.'});
+      }
+      const authToken = createAuthToken(user.apiRepr());
+      return res.json({authToken});
+    })(req, res);
   }
 );
 
