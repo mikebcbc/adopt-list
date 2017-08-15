@@ -12,14 +12,6 @@ const createAuthToken = user => {
   });
 };
 
-// router.post('/login',
-//   passport.authenticate('basic', {session: false}),
-//   (req, res) => {
-//     const authToken = createAuthToken(req.user.apiRepr());
-//     res.json({authToken});
-//   }
-// );
-
 router.post('/login', (req, res) => {
     passport.authenticate('basic', {session: false}, function(err, user, info) {
       console.log(user);

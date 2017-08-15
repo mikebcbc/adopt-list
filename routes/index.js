@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const passport = require('passport');
 const rp = require('request-promise-native');
 
 /* GET home page. */
@@ -12,7 +13,14 @@ router.get('/browse', (req, res) => {
 	  .then(function(pets) {
 	    res.render('browse', {data: pets, title: 'Browse' });
 	  });
-})
+});
+
+router.get('/my-list',
+  passport.authenticate('jwt', {session: false}),
+  (req, res) => {
+    res.render('my-list', {token: req.user});
+  }
+);
 
 router.get('/login', (req, res) => {
 	res.render('login');

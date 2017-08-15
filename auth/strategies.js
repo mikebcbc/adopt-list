@@ -7,7 +7,9 @@ const mongoose = require('mongoose');
 const {User} = require('../models');
 
 const opts = {
-  jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme('Bearer'),
+  // jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme('Bearer'),
+  // jwtFromRequest: ExtractJwt.fromUrlQueryParameter('auth_token'),
+  jwtFromRequest: ExtractJwt.fromExtractors([ExtractJwt.fromAuthHeaderWithScheme('Bearer'), ExtractJwt.fromUrlQueryParameter('auth_token')]),
 	secretOrKey: 'xczadf152%sxx!)32@1znbos@1az95u40cm%&edaf(#a',
 	algorithms: ['HS256']
 };
