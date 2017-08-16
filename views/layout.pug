@@ -11,9 +11,11 @@ html
 					li
 						a(href="/browse" alt="Browse") Browse
 					li
-						a(href="/" alt="My List") My List
+						a(alt="My List" onclick="window.location.href = 'my-list?auth_token=' + localStorage.getItem('authToken')") My List
 					li
 						a(href="/login" alt="Login") Login
 
 			
 		block content
+		script(src='//code.jquery.com/jquery-3.2.1.min.js')
+		block scripts

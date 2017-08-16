@@ -18,7 +18,7 @@ router.get('/browse', (req, res) => {
 router.get('/my-list',
   passport.authenticate('jwt', {session: false}),
   (req, res) => {
-    res.render('my-list', {token: req.user});
+    res.render('my-list', {data: pets, title: 'My List'});
   }
 );
 
