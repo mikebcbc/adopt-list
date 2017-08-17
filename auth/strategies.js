@@ -47,7 +47,8 @@ const basicAuth = new BasicStrategy((username, password, callback) => {
 
 
 const jwtAuth = new JwtStrategy(opts, (payload, done) => {
-	User.findOne({id: payload.sub}, (err, user) => {
+	User.findOne({username: payload.sub}, (err, user) => {
+    console.log(payload);
 		if (err) {
 			return done(err, false);
 		}
@@ -55,7 +56,6 @@ const jwtAuth = new JwtStrategy(opts, (payload, done) => {
 			return done(null, user);
 		}
 	})
-	return done(null, true);
 });
 
 module.exports = {basicAuth, jwtAuth};

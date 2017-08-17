@@ -1,17 +1,18 @@
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 const bcrypt = require('bcryptjs');
 
 mongoose.Promise = global.Promise;
 
-// Lists
-const listSchema = mongoose.Schema({
+const petSchema = mongoose.Schema({
 	name: {type: String, required: true},
 	description: {type: String, required: true},
 	contactInfo: {
 		phone: {type: String, required: false},
 		email: {type: String, required: true}
-	}
-});
+	},
+	belongsTo: [{type: Schema.Types.ObjectId, ref: 'User'}]
+})
 
 // Users
 const userSchema = mongoose.Schema({
@@ -23,7 +24,8 @@ const userSchema = mongoose.Schema({
 	password: {
 		type: String,
 		required: true
-	}
+	},
+	pets: [{type: Schema.Types.ObjectId, ref: 'Pet'}]
 });
 
 userSchema.methods.apiRepr = function() {
@@ -40,7 +42,7 @@ userSchema.statics.hashPassword = function(password) {
 	return bcrypt.hash(password, 10);
 };
 
-const List = mongoose.model('List', listSchema);
+const Pet = mongoose.model('Pet', petSchema);
 const User = mongoose.model('User', userSchema);
 
-module.exports = {List, User};
+module.exports = {Pet, User};
