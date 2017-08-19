@@ -3,16 +3,16 @@ extends layout
 block content
 	h2= title
 	.adoptable-pets
-		each pet in data
-			.pet
-				.photo
-					img(src=pet.media.photos.photo[0])
-				.name= pet.name.$t
-				.description
-					p= pet.description.$t
-				.action
-					a(href="", class="add-to-list") ADD TO LIST
-					a(href="") CONTACT SHELTER
+		//- each pet in data
+		//- 	.pet
+		//- 		.photo
+		//- 			img(src=pet.media.photos.photo[0])
+		//- 		.name= pet.name.$t
+		//- 		.description
+		//- 			p= pet.description.$t
+		//- 		.action
+		//- 			a(href="", class="add-to-list") ADD TO LIST
+		//- 			a(href="") CONTACT SHELTER
 	
 block scripts
-	script(src='/javascripts/client.js')
+	script(src='/javascripts/browse-client.js')
