@@ -8,15 +8,8 @@ router.get('/', (req, res) => {
   res.render('index', { text: 'Hello World' });
 });
 
-// router.get('/browse', (req, res) => {
-// 	rp({uri: 'http://localhost:3000/pets', json: true}) // Change request to client side (jquery)
-// 	  .then(function(pets) {
-// 	    res.render('browse', {data: pets, title: 'Browse' });
-// 	  });
-// });
-
 router.get('/browse', (req, res) => {
-  res.render('browse', { title: 'Browse' });
+  res.render('browse', { title: 'Browse Available Pets' });
 });
 
 router.get('/my-list',

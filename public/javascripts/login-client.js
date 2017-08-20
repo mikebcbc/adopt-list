@@ -61,7 +61,7 @@ $('.login').submit(function(e) {
       } else {
         console.log(tkn);
         localStorage.setItem('authToken', tkn.authToken);
-        $(location).attr('href', 'http://localhost:3000/my-list?auth_token=' + tkn.authToken);
+        // $(location).attr('href', 'http://localhost:3000/my-list?auth_token=' + tkn.authToken);
         // Save token to local storage and redirect
       }
     }

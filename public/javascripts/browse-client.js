@@ -6,8 +6,8 @@ var RESULT_TEMPLATE = (
 		'<div class="name"></div>' +
 		'<div class="description"><p></p></div>' +
 		'<div class="action">' +
-			'<a href="" class="add-to-list">ADD TO LIST</a>' +
-			'<a href="" class="contact-shelter">CONTACT SHELTER</a>' +
+			'<a href class="add-to-list">ADD TO LIST</a>' +
+			'<a href class="contact-shelter">CONTACT SHELTER</a>' +
 		'</div>' +
 	'</div>'
 );
@@ -43,15 +43,17 @@ function getPetData(pet) {
 		name: $(pet).find(".name").text(),
 		description: $(pet).find(".description").text(),
 		contactInfo: {
-			phone: $(pet).find(".phone").text(),
-			email: $(pet).find(".email").text()
+			// phone: $(pet).find(".phone").text(),
+			// email: $(pet).find(".email").text()
+			phone: '1231231231',
+			email: '123@123.com'
 		}
 	}
 	return petInfo;
 };
 
 function addToList() {
-	$('.pet').on("click", ".add-to-list", function(e) {
+	$('.adoptable-pets').on("click", ".add-to-list", function(e) {
 		e.preventDefault();
 		const pet = getPetData($(this).closest(".pet"));
 		console.log(pet);

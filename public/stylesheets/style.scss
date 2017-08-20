@@ -15,10 +15,20 @@ html {
 }
 
 body {
-	// padding: 20px 50px;
 	margin: 0;
 	font-size: 16px;
 	font-family: $main-font;
+}
+
+h2 {
+	margin: 0 0 20px 0;
+	width: 80%;
+	padding-top: 15px;
+	padding-bottom: 10px;
+	border-bottom: 2px solid white;
+	color: #fff;
+	font-weight: 400;
+	font-size: 40px;
 }
 
 header {
@@ -45,13 +55,18 @@ header {
 	}
 }
 
+.wrapper {
+	margin: 0 auto;
+	padding: 20px 50px;
+}
+
 .adoptable-pets {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: center;
+	justify-content: space-between;
 	.pet {
 		position: relative;
-		margin: 10px;
+		margin: 10px 0;
 		width: 345px;
 		box-shadow: 0 3px 25px 0 rgba(0, 0, 0, 0.3), 0 7px 7px 0 rgba(0, 0, 0, 0.05);
 		.photo {

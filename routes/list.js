@@ -7,7 +7,6 @@ const {Pet} = require('../models');
 
 /* POST pet to list */
 router.post('/', passport.authenticate('jwt', {session: false}), function(req, res) {
-	console.log(req.body);
 	Pet.create({
 		name: req.body.name,
 		description: req.body.description,
@@ -33,5 +32,9 @@ router.post('/', passport.authenticate('jwt', {session: false}), function(req, r
 		res.status(500).json({message: 'Internal Server Error'});
 	});
 });
+
+router.get('/', passport.authenticate('jwt', {session: false}), function(req, res) {
+
+})
 
 module.exports = router;
