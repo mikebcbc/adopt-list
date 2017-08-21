@@ -7,8 +7,6 @@ const mongoose = require('mongoose');
 const {User} = require('../models');
 
 const opts = {
-  // jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme('Bearer'),
-  // jwtFromRequest: ExtractJwt.fromUrlQueryParameter('auth_token'),
   jwtFromRequest: ExtractJwt.fromExtractors([ExtractJwt.fromAuthHeaderWithScheme('Bearer'), ExtractJwt.fromUrlQueryParameter('auth_token')]),
 	secretOrKey: 'xczadf152%sxx!)32@1znbos@1az95u40cm%&edaf(#a',
 	algorithms: ['HS256']
@@ -48,7 +46,6 @@ const basicAuth = new BasicStrategy((username, password, callback) => {
 
 const jwtAuth = new JwtStrategy(opts, (payload, done) => {
 	User.findOne({username: payload.sub}, (err, user) => {
-    console.log(payload);
 		if (err) {
 			return done(err, false);
 		}

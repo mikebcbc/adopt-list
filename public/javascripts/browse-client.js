@@ -17,7 +17,7 @@ var PETS_ARRAY;
 function renderPet(pet) {
 	console.log(pet);
 	var template = $(RESULT_TEMPLATE);
-	template.attr("data-id", pet.id.$t); // Fix & create global var
+	template.attr("data-id", pet.id.$t);
 	template.find(".photo img").attr('src', pet.media.photos.photo[0]);
 	template.find(".name").text(pet.name.$t);
 	template.find(".description p").text(pet.description.$t);

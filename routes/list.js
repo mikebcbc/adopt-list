@@ -3,7 +3,7 @@ const router = express.Router();
 const passport = require('passport');
 const mongoose = require('mongoose');
 
-const {Pet} = require('../models');
+const {Pet, User} = require('../models');
 
 /* POST pet to list */
 router.post('/', passport.authenticate('jwt', {session: false}), function(req, res) {
@@ -34,7 +34,14 @@ router.post('/', passport.authenticate('jwt', {session: false}), function(req, r
 });
 
 router.get('/', passport.authenticate('jwt', {session: false}), function(req, res) {
-
+	console.log(req.user.id);
+	User.findById(req.user.id).populate('pets')
+	.then(pets => {
+		res.status(201).json(pets.pets);
+	})
+	.catch(e => {
+		console.log(e);
+	}) 
 })
 
 module.exports = router;
