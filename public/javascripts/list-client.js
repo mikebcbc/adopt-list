@@ -3,10 +3,8 @@ function getPetData(pet) {
 		name: $(pet).find(".name").text(),
 		description: $(pet).find(".description").text(),
 		contactInfo: {
-			// phone: $(pet).find(".phone").text(),
-			// email: $(pet).find(".email").text()
-			phone: '1231231231', //temporary
-			email: '123@hotmail.com' //temporary
+			phone: $(pet).find(".phone").text(),
+			email: $(pet).find(".email").text()
 		}
 	}
 	return petInfo;
@@ -19,6 +17,9 @@ function addToList() {
 		$.ajax({
 			type: "POST",
 			url: "http://localhost:3000/list",
+			headers: {
+				'Authorization': 'Bearer ' + localStorage.getItem('authToken');
+			}
 			data: JSON.stringify(pet),
 			dataType: "json",
 			contentType: "application/json"
