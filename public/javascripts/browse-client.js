@@ -15,7 +15,6 @@ var RESULT_TEMPLATE = (
 var PETS_ARRAY;
 
 function renderPet(pet) {
-	console.log(pet);
 	var template = $(RESULT_TEMPLATE);
 	template.attr("data-id", pet.id.$t);
 	template.find(".photo img").attr('src', pet.media.photos.photo[0]);
@@ -47,6 +46,7 @@ function getPetData(pet) {
 	const petInfo = {
 		name: $(pet).find(".name").text(),
 		description: $(pet).find(".description").text(),
+		image: $(pet).find(".photo img").attr('src'),
 		contactInfo: {
 			// phone: $(pet).find(".phone").text(),
 			// email: $(pet).find(".email").text()
@@ -61,7 +61,6 @@ function addToList() {
 	$('.adoptable-pets').on("click", ".add-to-list", function(e) {
 		e.preventDefault();
 		const pet = getPetData($(this).closest(".pet"));
-		console.log(pet);
 		$.ajax({
 			type: "POST",
 			url: "http://localhost:3000/list",

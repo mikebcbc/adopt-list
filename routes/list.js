@@ -10,6 +10,7 @@ router.post('/', passport.authenticate('jwt', {session: false}), function(req, r
 	Pet.create({
 		name: req.body.name,
 		description: req.body.description,
+		image: req.body.image,
 		contactInfo: {
 			phone: req.body.contactInfo.phone,
 			email: req.body.contactInfo.email
