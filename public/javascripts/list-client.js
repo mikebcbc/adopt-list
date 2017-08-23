@@ -12,8 +12,6 @@ var RESULT_TEMPLATE = (
 	'</div>'
 );
 
-var PETS_ARRAY;
-
 function renderPet(pet) {
 	var template = $(RESULT_TEMPLATE);
 	template.attr("data-id", pet._id);
@@ -37,16 +35,38 @@ function getListedPets() {
 			'Authorization': 'Bearer ' + localStorage.getItem('authToken')
 		}
 	})
-	.done(function(e) {
-		console.log(e);
-		appendPets(e);
+	.done(function(pets) {
+		console.log(pets);
+		appendPets(pets);
 	})
 	.fail(function(err) {
 		console.log(e);
 	})
 }
 
+function removeFromList() {
+	$('.adoptable-pets').on("click", ".remove-from-list", function(e) {
+		e.preventDefault();
+		const pet = $(this).closest(".pet").attr('data-id');
+		$.ajax({
+			type: "DELETE",
+			url: "http://localhost:3000/list/" + pet,
+			headers: {
+				'Authorization': 'Bearer ' + localStorage.getItem('authToken')
+			},
+			contentType: "application/json"
+		})
+		.done(function(e) {
+			console.log(e);
+		})
+		.fail(function(err) {
+			console.log(err);
+		});
+	});
+}
+
 
 $(function() {
 	getListedPets();
+	removeFromList();
 })

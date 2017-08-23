@@ -37,12 +37,13 @@ function fetchPets() {
 		contentType: "application/json"
 	})
 	.done(function(pets) {
+		console.log(pets);
 		PETS_ARRAY = pets;
 		appendPets(PETS_ARRAY);
 	})
 }
 
-function getPetData(pet) {
+function getPetData(pet) { // Get from PETS_ARRAY instead of DOM, pet.id.$t
 	const petInfo = {
 		name: $(pet).find(".name").text(),
 		description: $(pet).find(".description").text(),
