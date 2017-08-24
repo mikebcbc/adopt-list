@@ -15,6 +15,8 @@ var RESULT_TEMPLATE = (
 function renderPet(pet) {
 	var template = $(RESULT_TEMPLATE);
 	template.attr("data-id", pet._id);
+	template.attr("data-phone", pet.contactInfo.phone);
+	template.attr("data-email", pet.contactInfo.email);
 	template.find(".photo img").attr('src', pet.image);
 	template.find(".name").text(pet.name);
 	template.find(".description p").text(pet.description);
@@ -47,7 +49,7 @@ function getListedPets() {
 function removeFromList() {
 	$('.adoptable-pets').on("click", ".remove-from-list", function(e) {
 		e.preventDefault();
-		const pet = $(this).closest(".pet").attr('data-id');
+		var pet = $(this).closest(".pet").attr('data-id');
 		$.ajax({
 			type: "DELETE",
 			url: "http://localhost:3000/list/" + pet,
@@ -57,7 +59,7 @@ function removeFromList() {
 			contentType: "application/json"
 		})
 		.done(function(e) {
-			console.log(e);
+			pet.remove();
 		})
 		.fail(function(err) {
 			console.log(err);

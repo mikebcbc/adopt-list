@@ -17,6 +17,8 @@ var PETS_ARRAY;
 function renderPet(pet) {
 	var template = $(RESULT_TEMPLATE);
 	template.attr("data-id", pet.id.$t);
+	template.attr("data-phone", pet.contact.phone.$t);
+	template.attr("data-email", pet.contact.email.$t);
 	template.find(".photo img").attr('src', pet.media.photos.photo[0]);
 	template.find(".name").text(pet.name.$t);
 	template.find(".description p").text(pet.description.$t);
@@ -37,31 +39,34 @@ function fetchPets() {
 		contentType: "application/json"
 	})
 	.done(function(pets) {
-		console.log(pets);
 		PETS_ARRAY = pets;
 		appendPets(PETS_ARRAY);
 	})
 }
 
-function getPetData(pet) { // Get from PETS_ARRAY instead of DOM, pet.id.$t
-	const petInfo = {
-		name: $(pet).find(".name").text(),
-		description: $(pet).find(".description").text(),
-		image: $(pet).find(".photo img").attr('src'),
+function getPetData(petID) {
+	
+	var foundPet = PETS_ARRAY.find(function(pet) {
+		return pet.id.$t == petID;
+	});
+
+	var petInfo = {
+		name: foundPet.name.$t,
+		description: foundPet.description.$t,
+		image: foundPet.media.photos.photo[0],
 		contactInfo: {
-			// phone: $(pet).find(".phone").text(),
-			// email: $(pet).find(".email").text()
-			phone: '1231231231',
-			email: '123@123.com'
+			phone: foundPet.contact.phone.$t,
+			email: foundPet.contact.email.$t
 		}
 	}
+
 	return petInfo;
 };
 
 function addToList() {
 	$('.adoptable-pets').on("click", ".add-to-list", function(e) {
 		e.preventDefault();
-		const pet = getPetData($(this).closest(".pet"));
+		var pet = getPetData($(this).closest(".pet").attr('data-id'));
 		$.ajax({
 			type: "POST",
 			url: "http://localhost:3000/list",
