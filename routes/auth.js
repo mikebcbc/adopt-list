@@ -14,9 +14,6 @@ const createAuthToken = user => {
 
 router.post('/login', (req, res) => {
     passport.authenticate('basic', {session: false}, function(err, user, info) {
-      console.log(user);
-      console.log(info);
-      console.log(err);
       if (err) {
         return res.json({"message": 'err1' + err});
       }
@@ -33,7 +30,6 @@ router.post('/refresh',
   passport.authenticate('jwt', {session: false}),
   (req, res) => {
     const authToken = createAuthToken(req.user);
-    console.log(res);
     res.json({authToken});
   }
 );

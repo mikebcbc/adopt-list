@@ -7,6 +7,7 @@ mongoose.Promise = global.Promise;
 const petSchema = mongoose.Schema({
 	name: {type: String, required: true},
 	description: {type: String, required: true},
+	image: {type: String, required: true},
 	contactInfo: {
 		phone: {type: String, required: false},
 		email: {type: String, required: true}

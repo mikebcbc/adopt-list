@@ -1,36 +1,74 @@
-function getPetData(pet) {
-	const petInfo = {
-		name: $(pet).find(".name").text(),
-		description: $(pet).find(".description").text(),
-		contactInfo: {
-			phone: $(pet).find(".phone").text(),
-			email: $(pet).find(".email").text()
-		}
-	}
-	return petInfo;
+var RESULT_TEMPLATE = (
+	'<div class="pet">' +
+		'<div class="photo">' +
+			'<img src="" alt="" />' +
+		'</div>' +
+		'<div class="name"></div>' +
+		'<div class="description"><p></p></div>' +
+		'<div class="action">' +
+			'<a href class="remove-from-list">REMOVE FROM LIST</a>' +
+			'<a href class="contact-shelter">CONTACT SHELTER</a>' +
+		'</div>' +
+	'</div>'
+);
+
+function renderPet(pet) {
+	var template = $(RESULT_TEMPLATE);
+	template.attr("data-id", pet._id);
+	template.attr("data-phone", pet.contactInfo.phone);
+	template.attr("data-email", pet.contactInfo.email);
+	template.find(".photo img").attr('src', pet.image);
+	template.find(".name").text(pet.name);
+	template.find(".description p").text(pet.description);
+	$('.adoptable-pets').append(template);
 }
 
-function addToList() {
-	$('.pet').on("click", ".add-to-list", function(e) {
+function appendPets(pets) {
+	var results = pets.forEach(function(item) {
+		return renderPet(item);
+	});
+}
+
+function getListedPets() {
+	$.ajax({
+		type: "GET",
+		url: "http://localhost:3000/list",
+		headers: {
+			'Authorization': 'Bearer ' + localStorage.getItem('authToken')
+		}
+	})
+	.done(function(pets) {
+		console.log(pets);
+		appendPets(pets);
+	})
+	.fail(function(err) {
+		console.log(e);
+	})
+}
+
+function removeFromList() {
+	$('.adoptable-pets').on("click", ".remove-from-list", function(e) {
 		e.preventDefault();
-		const pet = getPetData($(this).closest(".pet"));
+		var pet = $(this).closest(".pet").attr('data-id');
 		$.ajax({
-			type: "POST",
-			url: "http://localhost:3000/list",
+			type: "DELETE",
+			url: "http://localhost:3000/list/" + pet,
 			headers: {
-				'Authorization': 'Bearer ' + localStorage.getItem('authToken');
-			}
-			data: JSON.stringify(pet),
-			dataType: "json",
+				'Authorization': 'Bearer ' + localStorage.getItem('authToken')
+			},
 			contentType: "application/json"
 		})
 		.done(function(e) {
-			console.log(e);
+			pet.remove();
+		})
+		.fail(function(err) {
+			console.log(err);
 		});
 	});
 }
 
 
 $(function() {
-	addToList();
+	getListedPets();
+	removeFromList();
 })

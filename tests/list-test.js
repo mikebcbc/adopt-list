@@ -16,6 +16,7 @@ function generateData() {
 	return {
 		name: faker.name.firstName(),
 		description: faker.lorem.paragraph(),
+		image: faker.image.imageUrl(),
 		contactInfo: {
 			phone: faker.phone.phoneNumber(),
 			email: faker.internet.email()
@@ -57,7 +58,6 @@ describe('List Tests', function() {
 					.post('/auth/login')
 					.set("Authorization", 'Basic dGVzdGVyQHRlc3RpbmcuY29tOnRlc3Rlcg==')
 					.then((res) => {
-						console.log(res);
 						return chai.request(app)
 						.post('/list')
 						.set('Authorization', `Bearer ${res.body.authToken}`)

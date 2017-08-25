@@ -13,27 +13,20 @@ block content
 				form(class="login")
 					.field-wrap
 						label Email Address
-						input(type="email" required name="username" id="username")
+						input(type="email" required name="username" class="username")
 					.field-wrap
 						label Password
-						input(type="password" required name="password" id="password")
+						input(type="password" required name="password" class="password")
 					button.submit Login
 			#register
 				h1 Register
-				form(method='POST' action='/users')
-					.top-row
-						.field-wrap
-							label First Name
-							input(type="text" required)
-						.field-wrap
-							label Last Name
-							input(type="text" required)
+				form(class="register")
 					.field-wrap
 						label Email Address
-						input(type="email" required name="username")
+						input(type="email" required name="username" class="username")
 					.field-wrap
 						label Password
-						input(type="password" required name="password")
+						input(type="password" required name="password" class="password")
 					button.submit Get Started
 block scripts
 	script(src="../javascripts/login-client.js")
