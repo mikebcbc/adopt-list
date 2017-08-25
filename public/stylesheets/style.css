@@ -56,6 +56,19 @@ header {
     margin: 10px 0;
     width: 345px;
     box-shadow: 0 3px 25px 0 rgba(0, 0, 0, 0.3), 0 7px 7px 0 rgba(0, 0, 0, 0.05); }
+    .adoptable-pets .pet.clicked {
+      position: fixed;
+      z-index: 999;
+      width: 50%;
+      height: 50%;
+      top: 0;
+      left: 25%; }
+      .adoptable-pets .pet.clicked .photo {
+        width: 100%;
+        height: 100%; }
+      .adoptable-pets .pet.clicked .description p {
+        -webkit-line-clamp: inherit;
+        line-height: 25px; }
     .adoptable-pets .pet .photo {
       position: relative;
       width: 345px;
@@ -195,5 +208,17 @@ header {
     -webkit-appearance: none; }
     .login-form .tab-content .submit:hover, .login-form .tab-content .submit:focus {
       background: black; }
+
+.demo-account {
+  background: rgba(20, 92, 127, 0.9);
+  margin: 0 auto;
+  max-width: 600px;
+  padding: 10px 40px;
+  border-radius: 5px;
+  box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
+  color: white;
+  font-size: 18px; }
+  .demo-account p {
+    text-align: center; }
 
 /*# sourceMappingURL=style.css.map */

@@ -83,8 +83,19 @@ function addToList() {
 	});
 }
 
+function expandPet() {
+	$('.adoptable-pets').on('click', '.pet', function(e) {
+		e.preventDefault();
+		$(this).closest(".pet").addClass('clicked');
+		// $('body').click(function() {
+		// 	$('.pet').removeClass('clicked');
+		// })
+	})
+}
+
 
 $(function() {
 	fetchPets();
 	addToList();
+	expandPet();
 })

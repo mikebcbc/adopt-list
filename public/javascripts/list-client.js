@@ -59,7 +59,6 @@ function removeFromList() {
 			contentType: "application/json",
 		})
 		.done(function(e) {
-			console.log(e);
 			pet.remove();
 		})
 		.fail(function(err) {
