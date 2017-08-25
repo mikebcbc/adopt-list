@@ -44,8 +44,13 @@ $('.tab a').on('click', function (e) {
 
 $('.login').submit(function(e) {
   e.preventDefault();
-  const username = $("input#username").val();
-  const password = $("input#password").val(); 
+  var username = $("#login input.username").val();
+  var password = $("#login input.password").val();
+  login(username, password);
+});
+
+
+function login(username, password) { 
   $.ajax
   ({
     type: "POST",
@@ -61,9 +66,27 @@ $('.login').submit(function(e) {
       } else {
         console.log(tkn);
         localStorage.setItem('authToken', tkn.authToken);
-        $(location).attr('href', 'http://localhost:3000/my-list?auth_token=' + tkn.authToken);
-        // Save token to local storage and redirect
+        $(location).attr('href', 'http://localhost:3000/browse?auth_token=' + tkn.authToken);
       }
     }
-});
+  });
+}
+
+$('.register').submit(function(e) {
+  e.preventDefault();
+  var username = $("#register input.username").val();
+  var password = $("#register input.password").val(); 
+  $.ajax
+  ({
+    type: "POST",
+    url: "/users",
+    data: {
+      username: username,
+      password: password
+    },
+    dataType: 'json',
+    success: function () {
+      login(username, password);
+    }
+  });
 })
