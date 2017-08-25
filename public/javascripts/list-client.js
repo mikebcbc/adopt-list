@@ -49,16 +49,17 @@ function getListedPets() {
 function removeFromList() {
 	$('.adoptable-pets').on("click", ".remove-from-list", function(e) {
 		e.preventDefault();
-		var pet = $(this).closest(".pet").attr('data-id');
+		var pet = $(this).closest(".pet");
 		$.ajax({
 			type: "DELETE",
-			url: "http://localhost:3000/list/" + pet,
+			url: "http://localhost:3000/list/" + pet.attr('data-id'),
 			headers: {
 				'Authorization': 'Bearer ' + localStorage.getItem('authToken')
 			},
-			contentType: "application/json"
+			contentType: "application/json",
 		})
 		.done(function(e) {
+			console.log(e);
 			pet.remove();
 		})
 		.fail(function(err) {

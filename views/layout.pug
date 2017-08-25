@@ -10,14 +10,14 @@ html
 			nav
 				ul
 					li
-						a(alt="Browse" onclick="window.location.href = 'browse?auth_token=' + localStorage.getItem('authToken')") Browse
+						a(alt="Browse" onclick="window.location.href = 'browse?auth_token=' + localStorage.getItem('authToken')" class="browse") Browse
 					li
-						a(alt="My List" onclick="window.location.href = 'my-list?auth_token=' + localStorage.getItem('authToken')") My List
+						a(alt="My List" onclick="window.location.href = 'my-list?auth_token=' + localStorage.getItem('authToken')" class="my-list") My List
 					li
-						a(href="/login" alt="Login") Login
+						a(href="/login" alt="Login" class="login") Login
 
 			
 		block content
 		script(src='//code.jquery.com/jquery-3.2.1.min.js')
+		script(src='/javascripts/global-client.js')
 		block scripts
-		//- Make script for nav bar links, etc.
