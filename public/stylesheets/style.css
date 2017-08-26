@@ -43,6 +43,18 @@ header {
     header nav ul li {
       margin-left: 30px; }
 
+.overlay {
+  background-color: rgba(0, 0, 0, 0.2);
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0; }
+
 .wrapper {
   margin: 0 auto;
   padding: 20px 50px; }
@@ -64,8 +76,12 @@ header {
       top: 0;
       left: 25%; }
       .adoptable-pets .pet.clicked .photo {
+        background-size: contain;
+        background-color: #444343;
         width: 100%;
         height: 100%; }
+      .adoptable-pets .pet.clicked .name {
+        top: 420px; }
       .adoptable-pets .pet.clicked .description p {
         -webkit-line-clamp: inherit;
         line-height: 25px; }
@@ -73,9 +89,10 @@ header {
       position: relative;
       width: 345px;
       height: 175px;
-      overflow: hidden; }
-      .adoptable-pets .pet .photo img {
-        width: 100%; }
+      overflow: hidden;
+      background-position: center center;
+      background-size: cover;
+      background-repeat: no-repeat; }
       .adoptable-pets .pet .photo:after {
         content: "";
         display: block;

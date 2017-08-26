@@ -1,7 +1,6 @@
 var RESULT_TEMPLATE = (
 	'<div class="pet">' +
 		'<div class="photo">' +
-			'<img src="" alt="" />' +
 		'</div>' +
 		'<div class="name"></div>' +
 		'<div class="description"><p></p></div>' +
@@ -19,7 +18,7 @@ function renderPet(pet) {
 	template.attr("data-id", pet.id.$t);
 	template.attr("data-phone", pet.contact.phone.$t);
 	template.attr("data-email", pet.contact.email.$t);
-	template.find(".photo img").attr('src', pet.media.photos.photo[0]);
+	template.find(".photo").css('background-image', 'url("' + pet.media.photos.photo[0] + '")');
 	template.find(".name").text(pet.name.$t);
 	template.find(".description p").text(pet.description.$t);
 	$('.adoptable-pets').append(template);
@@ -87,9 +86,13 @@ function expandPet() {
 	$('.adoptable-pets').on('click', '.pet', function(e) {
 		e.preventDefault();
 		$(this).closest(".pet").addClass('clicked');
-		// $('body').click(function() {
-		// 	$('.pet').removeClass('clicked');
-		// })
+		$('.overlay').show().css('z-index', '998');
+		$('body').css('overflow', 'hidden');
+		$('.overlay').click(function() {
+			$('.pet').removeClass('clicked');
+			$('.overlay').hide().css('z-index', '-1');
+			$('body').css('overflow', 'auto');
+		})
 	})
 }
 
