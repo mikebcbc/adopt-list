@@ -1,7 +1,6 @@
 var RESULT_TEMPLATE = (
 	'<div class="pet">' +
 		'<div class="photo">' +
-			'<img src="" alt="" />' +
 		'</div>' +
 		'<div class="name"></div>' +
 		'<div class="description"><p></p></div>' +
@@ -17,7 +16,7 @@ function renderPet(pet) {
 	template.attr("data-id", pet._id);
 	template.attr("data-phone", pet.contactInfo.phone);
 	template.attr("data-email", pet.contactInfo.email);
-	template.find(".photo img").attr('src', pet.image);
+	template.find(".photo").css('background-image', 'url("' + pet.image + '")');
 	template.find(".name").text(pet.name);
 	template.find(".description p").text(pet.description);
 	$('.adoptable-pets').append(template);

@@ -1,35 +1,36 @@
 extends layout
 
 block content
-	.login-form
-		ul.tab-group
-			li.tab.active
-				a(href="#login") Log In
-			li.tab
-				a(href="#register") Register
-		.tab-content
-			#login
-				h1 Welcome Back!
-				form(class="login")
-					.field-wrap
-						label Email Address
-						input(type="email" required name="username" class="username")
-					.field-wrap
-						label Password
-						input(type="password" required name="password" class="password")
-					button.submit Login
-			#register
-				h1 Register
-				form(class="register")
-					.field-wrap
-						label Email Address
-						input(type="email" required name="username" class="username")
-					.field-wrap
-						label Password
-						input(type="password" required name="password" class="password")
-					button.submit Get Started
-	.demo-account
-		p!= '<strong>Username:</strong> demo@demo.com'
-		p!= '<strong>Password:</strong> demo'
+	.login-wrapper
+		.login-form
+			ul.tab-group
+				li.tab.active
+					a(href="#login") Log In
+				li.tab
+					a(href="#register") Register
+			.tab-content
+				#login
+					h1 Welcome Back!
+					form(class="login")
+						.field-wrap
+							label Email Address
+							input(type="email" required name="username" class="username")
+						.field-wrap
+							label Password
+							input(type="password" required name="password" class="password")
+						button.submit Login
+				#register
+					h1 Register
+					form(class="register")
+						.field-wrap
+							label Email Address
+							input(type="email" required name="username" class="username")
+						.field-wrap
+							label Password
+							input(type="password" required name="password" class="password")
+						button.submit Get Started
+		.demo-account
+			p!= '<strong>Username:</strong> demo@demo.com'
+			p!= '<strong>Password:</strong> demo'
 block scripts
 	script(src="../javascripts/login-client.js")

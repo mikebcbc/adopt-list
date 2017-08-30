@@ -11,13 +11,21 @@ var RESULT_TEMPLATE = (
 	'</div>'
 );
 
+var BASE_URL = "http://localhost:3000";
+
 var PETS_ARRAY;
+
+var PETS_IN_LIST;
+
+// function checkPet(pet) {
+// };
 
 function renderPet(pet) {
 	var template = $(RESULT_TEMPLATE);
 	template.attr("data-id", pet.id.$t);
 	template.attr("data-phone", pet.contact.phone.$t);
 	template.attr("data-email", pet.contact.email.$t);
+	template.find(".contact-shelter").attr('href', "mailto:" + pet.contact.email.$t);
 	template.find(".photo").css('background-image', 'url("' + pet.media.photos.photo[0] + '")');
 	template.find(".name").text(pet.name.$t);
 	template.find(".description p").text(pet.description.$t);
@@ -25,23 +33,39 @@ function renderPet(pet) {
 }
 
 function appendPets(pets) {
-	var results = pets.forEach(function(item) {
-		return renderPet(item);
+	var results = pets.forEach(function(pet) {
+			return renderPet(pet);
 	});
 }
 
 function fetchPets() {
-	$.ajax({
-		type: "GET",
-		url: "http://localhost:3000/pets",
-		dataType: "json",
-		contentType: "application/json"
-	})
-	.done(function(pets) {
+	return Promise.all([
+		$.ajax({
+			type: "GET",
+			url: BASE_URL + "/pets",
+			dataType: "json",
+			contentType: "application/json"
+		})
+		.done(function(pets) {
+			Promise.resolve(pets);
+		}),
+		$.ajax({
+			type: "GET",
+			url: BASE_URL + "/list",
+			headers: {
+				"Authorization": "Bearer " + localStorage.getItem('authToken')
+			}
+		})
+		.done(function(list) {
+			Promise.resolve(list);
+		})
+	])
+	.then(function([pets, list]) {
 		PETS_ARRAY = pets;
+		PETS_IN_LIST = list;
 		appendPets(PETS_ARRAY);
 	})
-}
+};
 
 function getPetData(petID) {
 	
@@ -50,6 +74,7 @@ function getPetData(petID) {
 	});
 
 	var petInfo = {
+		petId: petID,
 		name: foundPet.name.$t,
 		description: foundPet.description.$t,
 		image: foundPet.media.photos.photo[0],
@@ -57,18 +82,18 @@ function getPetData(petID) {
 			phone: foundPet.contact.phone.$t,
 			email: foundPet.contact.email.$t
 		}
-	}
-
+	};
 	return petInfo;
 };
 
 function addToList() {
 	$('.adoptable-pets').on("click", ".add-to-list", function(e) {
 		e.preventDefault();
+		e.stopImmediatePropagation(); // Why does this work as opposed to stopPropogation?
 		var pet = getPetData($(this).closest(".pet").attr('data-id'));
 		$.ajax({
 			type: "POST",
-			url: "http://localhost:3000/list",
+			url: BASE_URL + "/list",
 			headers: {
 				'Authorization': 'Bearer ' + localStorage.getItem('authToken')
 			},
@@ -77,14 +102,41 @@ function addToList() {
 			contentType: "application/json"
 		})
 		.done(function(e) {
-			console.log(e);
+			$('.pet[data-id="' + e.petId + '"] .add-to-list').attr("class", "remove-from-list").text("REMOVE FROM LIST");
 		});
 	});
+};
+
+function removeFromList() {
+	$('.adoptable-pets').on("click", ".remove-from-list", function(e) {
+		e.preventDefault();
+		e.stopImmediatePropagation(); // Why does this not work?
+		var pet = $(this).closest(".pet");
+		$.ajax({
+			type: "DELETE",
+			url: "http://localhost:3000/list/" + pet.attr('data-id'),
+			headers: {
+				'Authorization': 'Bearer ' + localStorage.getItem('authToken')
+			},
+			contentType: "application/json",
+		})
+		.done(function(e) {
+			pet.remove();
+		})
+		.fail(function(err) {
+			console.log(err);
+		});
+	});
+};
+
+function contactShelter() {
+	$('.adoptable-pets').on("click", ".contact-shelter", function(e) {
+		e.stopPropogation(); // works here for some reason?
+	})
 }
 
 function expandPet() {
 	$('.adoptable-pets').on('click', '.pet', function(e) {
-		e.preventDefault();
 		$(this).closest(".pet").addClass('clicked');
 		$('.overlay').show().css('z-index', '998');
 		$('body').css('overflow', 'hidden');
@@ -94,11 +146,12 @@ function expandPet() {
 			$('body').css('overflow', 'auto');
 		})
 	})
-}
+};
 
 
 $(function() {
 	fetchPets();
-	addToList();
 	expandPet();
+	addToList();
+	contactShelter();
 })

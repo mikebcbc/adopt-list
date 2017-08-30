@@ -20,6 +20,7 @@ router.get('/', passport.authenticate('jwt', {session: false}), function(req, re
 /* POST pet to list */
 router.post('/', passport.authenticate('jwt', {session: false}), (req, res) => {
 	Pet.create({
+		petId: req.body.petId,
 		name: req.body.name,
 		description: req.body.description,
 		image: req.body.image,
