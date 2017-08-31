@@ -14,6 +14,7 @@ chai.use(chaiHttp);
 
 function generateData() {
 	return {
+		petId: faker.random.number(),
 		name: faker.name.firstName(),
 		description: faker.lorem.paragraph(),
 		image: faker.image.imageUrl(),

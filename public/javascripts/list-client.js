@@ -6,7 +6,7 @@ var RESULT_TEMPLATE = (
 		'<div class="description"><p></p></div>' +
 		'<div class="action">' +
 			'<a href class="remove-from-list">REMOVE FROM LIST</a>' +
-			'<a href class="contact-shelter">CONTACT SHELTER</a>' +
+			'<a href class="contact-shelter">CONTACT SHELTER<div class="tool-tip"></div></a>' +
 		'</div>' +
 	'</div>'
 );
@@ -16,6 +16,12 @@ function renderPet(pet) {
 	template.attr("data-id", pet._id);
 	template.attr("data-phone", pet.contactInfo.phone);
 	template.attr("data-email", pet.contactInfo.email);
+	if (pet.contactInfo.phone) {
+		template.find(".tool-tip").append('<div class="phone">Phone: ' + pet.contactInfo.phone + '</div>');
+	}
+	if (pet.contactInfo.email) {
+		template.find(".tool-tip").append('<div class="email">Email: ' + pet.contactInfo.email + '</div>');
+	}
 	template.find(".photo").css('background-image', 'url("' + pet.image + '")');
 	template.find(".name").text(pet.name);
 	template.find(".description p").text(pet.description);
@@ -66,8 +72,15 @@ function removeFromList() {
 	});
 }
 
+function contactShelter() {
+	$('.adoptable-pets').on("click", ".contact-shelter", function(e) {
+		e.stopPropogation();
+	})
+}
+
 
 $(function() {
 	getListedPets();
 	removeFromList();
+	contactShelter();
 })

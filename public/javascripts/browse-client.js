@@ -149,7 +149,7 @@ function removeFromList() {
 
 function contactShelter() {
 	$('.adoptable-pets').on("click", ".contact-shelter", function(e) {
-		e.stopPropogation(); // works here for some reason?
+		e.stopPropogation();
 	})
 }
 

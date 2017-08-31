@@ -3,9 +3,9 @@
   box-sizing: border-box; }
 
 html {
-  background: #74ebd5;
-  background: -webkit-linear-gradient(to right, #ACB6E5, #74ebd5);
-  background: linear-gradient(to right, #ACB6E5, #74ebd5); }
+  background: #ecefee;
+  background: -webkit-linear-gradient(to right, #ACB6E5, #ecefee);
+  background: linear-gradient(to right, #ACB6E5, #ecefee); }
 
 body {
   margin: 0;
