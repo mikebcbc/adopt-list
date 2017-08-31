@@ -11,8 +11,6 @@ var RESULT_TEMPLATE = (
 	'</div>'
 );
 
-var BASE_URL = "http://localhost:3000";
-
 var PETS_ARRAY;
 
 var PETS_IN_LIST;
@@ -133,7 +131,7 @@ function removeFromList() {
 		var pet = $(this).closest(".pet");
 		$.ajax({
 			type: "DELETE",
-			url: "http://localhost:3000/list/" + pet.attr('data-mid'),
+			url: BASE_URL + "/list/" + pet.attr('data-mid'),
 			headers: {
 				'Authorization': 'Bearer ' + localStorage.getItem('authToken')
 			},

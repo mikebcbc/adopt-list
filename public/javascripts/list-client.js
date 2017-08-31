@@ -37,7 +37,7 @@ function appendPets(pets) {
 function getListedPets() {
 	$.ajax({
 		type: "GET",
-		url: "http://localhost:3000/list",
+		url: BASE_URL + "/list",
 		headers: {
 			'Authorization': 'Bearer ' + localStorage.getItem('authToken')
 		}
@@ -57,7 +57,7 @@ function removeFromList() {
 		var pet = $(this).closest(".pet");
 		$.ajax({
 			type: "DELETE",
-			url: "http://localhost:3000/list/" + pet.attr('data-id'),
+			url: BASE_URL + "/list/" + pet.attr('data-id'),
 			headers: {
 				'Authorization': 'Bearer ' + localStorage.getItem('authToken')
 			},

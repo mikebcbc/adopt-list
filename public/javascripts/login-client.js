@@ -66,7 +66,7 @@ function login(username, password) {
       } else {
         console.log(tkn);
         localStorage.setItem('authToken', tkn.authToken);
-        $(location).attr('href', 'http://localhost:3000/browse?auth_token=' + tkn.authToken);
+        $(location).attr('href', BASE_URL + '/browse?auth_token=' + tkn.authToken);
       }
     }
   });
