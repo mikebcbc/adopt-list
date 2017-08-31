@@ -181,6 +181,8 @@ header {
       display: flex;
       justify-content: space-between;
       padding: 15px; }
+      .adoptable-pets .pet .action .add-to-list {
+        color: green; }
       .adoptable-pets .pet .action a {
         text-decoration: none;
         color: #FF1744;

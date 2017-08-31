@@ -221,6 +221,9 @@ header {
 			display: flex;
 			justify-content: space-between;
 			padding: 15px;
+			.add-to-list {
+				color: green;
+			}
 			a {
 				text-decoration: none;
 				color: #FF1744;

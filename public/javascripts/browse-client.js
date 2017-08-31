@@ -23,17 +23,19 @@ function checkPet(petId) {
 	})
 };
 
-function renderPet(pet) { // Change styling between two buttons.
+function renderPet(pet) {
 	var petExists = checkPet(pet.id.$t);
 	var template = $(RESULT_TEMPLATE);
 	if (!petExists) {
-		template.find('.action-button').addClass("add-to-list").text('ADD TO LIST');
+		template.find('.action-button').addClass("add-to-list").text('+ ADD TO LIST');
 	} else {
-		template.find('.action-button').addClass("remove-from-list").text('REMOVE FROM LIST');
+		var mId = PETS_IN_LIST.find(function(petId) {
+			return petId.petId == pet.id.$t;
+		})
+		template.attr('data-mid', mId._id);
+		template.find('.action-button').addClass("remove-from-list").text('- REMOVE FROM LIST');
 	}
 	template.attr("data-id", pet.id.$t);
-	template.attr("data-phone", pet.contact.phone.$t);
-	template.attr("data-email", pet.contact.email.$t);
 	if (pet.contact.phone.$t) {
 		template.find(".tool-tip").append('<div class="phone">Phone: ' + pet.contact.phone.$t + '</div>');
 	}
@@ -117,7 +119,6 @@ function addToList() {
 			contentType: "application/json"
 		})
 		.done(function(e) {
-			console.log(e);
 			$('.pet[data-id="' + e.petId + '"] .add-to-list').attr("class", "remove-from-list").text("REMOVE FROM LIST");
 			$('.pet[data-id="' + e.petId + '"]').attr('data-mid', e._id);
 		});
@@ -128,7 +129,7 @@ function removeFromList() {
 	$('.adoptable-pets').on("click", ".remove-from-list", function(e) {
 		console.log(e);
 		e.preventDefault();
-		e.stopImmediatePropagation(); // Why does this not work?
+		e.stopImmediatePropagation();
 		var pet = $(this).closest(".pet");
 		$.ajax({
 			type: "DELETE",
