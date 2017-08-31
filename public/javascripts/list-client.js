@@ -76,11 +76,25 @@ function contactShelter() {
 	$('.adoptable-pets').on("click", ".contact-shelter", function(e) {
 		e.stopPropogation();
 	})
-}
+};
+
+function expandPet() {
+	$('.adoptable-pets').on('click', '.pet', function(e) {
+		$(this).closest(".pet").addClass('clicked');
+		$('.overlay').show().css('z-index', '998');
+		$('body').css('overflow', 'hidden');
+		$('.overlay').click(function() {
+			$('.pet').removeClass('clicked');
+			$('.overlay').hide().css('z-index', '-1');
+			$('body').css('overflow', 'auto');
+		})
+	})
+};
 
 
 $(function() {
 	getListedPets();
 	removeFromList();
+	expandPet();
 	contactShelter();
 })
