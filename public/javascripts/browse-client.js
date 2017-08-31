@@ -6,7 +6,7 @@ var RESULT_TEMPLATE = (
 		'<div class="description"><p></p></div>' +
 		'<div class="action">' +
 			'<a href class="action-button"></a>' +
-			'<a href class="contact-shelter">CONTACT SHELTER<div class="tool-tip">Email: <p class="email"></p> Phone: <p class="phone"></p></div></a>' +
+			'<a href class="contact-shelter">CONTACT SHELTER<div class="tool-tip"></div></a>' +
 		'</div>' +
 	'</div>'
 );
@@ -34,8 +34,12 @@ function renderPet(pet) { // Change styling between two buttons.
 	template.attr("data-id", pet.id.$t);
 	template.attr("data-phone", pet.contact.phone.$t);
 	template.attr("data-email", pet.contact.email.$t);
-	template.find(".tool-tip .phone").text(pet.contact.phone.$t);
-	template.find(".tool-tip .email").text(pet.contact.email.$t);
+	if (pet.contact.phone.$t) {
+		template.find(".tool-tip").append('<div class="phone">Phone: ' + pet.contact.phone.$t + '</div>');
+	}
+	if (pet.contact.email.$t) {
+		template.find(".tool-tip").append('<div class="email">Email: ' + pet.contact.email.$t + '</div>');
+	}
 	template.find(".contact-shelter").attr('href', "mailto:" + pet.contact.email.$t);
 	template.find(".photo").css('background-image', 'url("' + pet.media.photos.photo[0] + '")');
 	template.find(".name").text(pet.name.$t);
