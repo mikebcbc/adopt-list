@@ -107,7 +107,7 @@ header {
     width: 50%;
     height: 100%;
     background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.9)), url("../images/triangle-background.jpg");
-    background-position: 145px 30px;
+    background-position: left;
     background-size: cover;
     -webkit-clip-path: polygon(100% 0, 0% 100%, 100% 100%);
     clip-path: polygon(100% 0, 0% 100%, 100% 100%); }
@@ -295,6 +295,47 @@ header {
   font-size: 18px; }
   .demo-account p {
     text-align: center; }
+
+.contact-shelter {
+  position: relative; }
+
+.contact-shelter:hover .tool-tip {
+  top: -70px;
+  transition: all 0.6s cubic-bezier(1, 0, 0.4, 1.7);
+  transform: translateX(-50%) scale(1); }
+
+.tool-tip {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 999;
+  width: 320px;
+  height: 50px;
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  border-radius: 3px;
+  background-color: #333;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 11px;
+  line-height: 50px;
+  color: #FFF;
+  text-align: center;
+  transform: translateX(-50%) scale(0);
+  transform-origin: bottom center;
+  transition: all 0.4s cubic-bezier(1, 0, 0.4, 1); }
+  .tool-tip:after {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #333;
+    content: '';
+    display: block;
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    transform: translateX(-50%); }
 
 @media screen and (max-width: 769px) {
   header {
