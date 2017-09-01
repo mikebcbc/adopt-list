@@ -13,14 +13,16 @@ body {
   font-family: "Roboto", sans-serif; }
 
 h2 {
+  color: white;
+  font-weight: 400;
+  font-size: 40px; }
+
+.title {
   margin: 0 0 20px 0;
   width: 80%;
   padding-top: 15px;
   padding-bottom: 10px;
-  border-bottom: 2px solid white;
-  color: #fff;
-  font-weight: 400;
-  font-size: 40px; }
+  border-bottom: 2px solid white; }
 
 header {
   display: flex;
@@ -112,6 +114,24 @@ header {
     -webkit-clip-path: polygon(100% 0, 0% 100%, 100% 100%);
     clip-path: polygon(100% 0, 0% 100%, 100% 100%); }
 
+.steps {
+  display: flex;
+  flex-direction: column; }
+  .steps .step-wrapper .step {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto; }
+    .steps .step-wrapper .step img {
+      margin: 0 10px;
+      max-width: 571px;
+      max-height: 428px; }
+    .steps .step-wrapper .step .info {
+      margin: 0 10px; }
+  .steps .step-2-wrapper {
+    background: gray; }
+
 .adoptable-pets {
   display: flex;
   flex-wrap: wrap;
@@ -186,7 +206,8 @@ header {
       .adoptable-pets .pet .action a {
         text-decoration: none;
         color: #FF1744;
-        font-weight: bold; }
+        font-weight: bold;
+        transition: all 0.5s; }
 
 .login-form {
   background: rgba(19, 35, 47, 0.9);

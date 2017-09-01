@@ -117,7 +117,7 @@ function addToList() {
 			contentType: "application/json"
 		})
 		.done(function(e) {
-			$('.pet[data-id="' + e.petId + '"] .add-to-list').attr("class", "remove-from-list").text("REMOVE FROM LIST");
+			$('.pet[data-id="' + e.petId + '"] .add-to-list').attr("class", "remove-from-list").text("- REMOVE FROM LIST");
 			$('.pet[data-id="' + e.petId + '"]').attr('data-mid', e._id);
 		});
 	});
@@ -138,7 +138,7 @@ function removeFromList() {
 			contentType: "application/json",
 		})
 		.done(function(e) {
-			pet.find('.remove-from-list').attr("class", "add-to-list").text("ADD TO LIST");
+			pet.find('.remove-from-list').attr("class", "add-to-list").text("+ ADD TO LIST");
 		})
 		.fail(function(err) {
 			console.log(err);

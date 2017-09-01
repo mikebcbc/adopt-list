@@ -22,14 +22,17 @@ body {
 }
 
 h2 {
+	color: white;
+	font-weight: 400;
+	font-size: 40px;
+}
+
+.title {
 	margin: 0 0 20px 0;
 	width: 80%;
 	padding-top: 15px;
 	padding-bottom: 10px;
 	border-bottom: 2px solid white;
-	color: #fff;
-	font-weight: 400;
-	font-size: 40px;
 }
 
 header {
@@ -141,6 +144,31 @@ header {
 	}
 }
 
+.steps {
+	display: flex;
+	flex-direction: column;
+	.step-wrapper {
+		.step {
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			max-width: 1200px;
+			margin: 0 auto;
+			img {
+				margin: 0 10px;
+				max-width: 571px;
+				max-height: 428px;
+			}
+			.info {
+				margin: 0 10px;
+			}
+		}
+	}
+	.step-2-wrapper {
+		background: gray;		
+	}
+}
+
 // BROWSE & LIST PAGE
 
 .adoptable-pets {
@@ -228,6 +256,7 @@ header {
 				text-decoration: none;
 				color: #FF1744;
 				font-weight: bold;
+				transition: all 0.5s;
 			}
 		}
 	}

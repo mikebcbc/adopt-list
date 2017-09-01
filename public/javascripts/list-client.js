@@ -5,7 +5,7 @@ var RESULT_TEMPLATE = (
 		'<div class="name"></div>' +
 		'<div class="description"><p></p></div>' +
 		'<div class="action">' +
-			'<a href class="remove-from-list">REMOVE FROM LIST</a>' +
+			'<a href class="remove-from-list">- REMOVE FROM LIST</a>' +
 			'<a href class="contact-shelter">CONTACT SHELTER<div class="tool-tip"></div></a>' +
 		'</div>' +
 	'</div>'
