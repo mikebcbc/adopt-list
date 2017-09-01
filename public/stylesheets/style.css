@@ -3,9 +3,9 @@
   box-sizing: border-box; }
 
 html {
-  background: #ecefee;
-  background: -webkit-linear-gradient(to right, #ACB6E5, #ecefee);
-  background: linear-gradient(to right, #ACB6E5, #ecefee); }
+  background: #ACB6E5;
+  background: -webkit-linear-gradient(to right, #ACB6E5, #a1e4e1);
+  background: linear-gradient(to right, #ACB6E5, #a1e4e1); }
 
 body {
   margin: 0;
@@ -129,8 +129,18 @@ header {
       max-height: 428px; }
     .steps .step-wrapper .step .info {
       margin: 0 10px; }
+      .steps .step-wrapper .step .info h2 {
+        font-family: "Ubuntu", sans-serif;
+        border-bottom: 3px white solid;
+        padding-bottom: 15px; }
+      .steps .step-wrapper .step .info p {
+        text-align: justify;
+        font-size: 18px; }
   .steps .step-2-wrapper {
-    background: gray; }
+    background: linear-gradient(rgba(38, 38, 43, 0.65), rgba(38, 38, 43, 0.75)), url("../images/sleeping-dog.jpg");
+    background-attachment: fixed; }
+    .steps .step-2-wrapper p {
+      color: white; }
 
 .adoptable-pets {
   display: flex;
