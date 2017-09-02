@@ -58,6 +58,9 @@ function fetchPets() {
 		$.ajax({
 			type: "GET",
 			url: BASE_URL + "/pets",
+			headers: {
+				"Authorization": "Bearer " + localStorage.getItem('authToken')
+			},
 			dataType: "json",
 			contentType: "application/json"
 		})

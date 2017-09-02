@@ -3,9 +3,7 @@
   box-sizing: border-box; }
 
 html {
-  background: #ACB6E5;
-  background: -webkit-linear-gradient(to right, #ACB6E5, #a1e4e1);
-  background: linear-gradient(to right, #ACB6E5, #a1e4e1); }
+  background: #ADD5F7; }
 
 body {
   margin: 0;
@@ -117,30 +115,94 @@ header {
 .steps {
   display: flex;
   flex-direction: column; }
+  .steps .step-wrapper h2 {
+    font-family: "Ubuntu", sans-serif;
+    border-bottom: 3px #16193B solid;
+    padding-bottom: 15px;
+    width: 70%;
+    margin: 30px auto;
+    color: #16193B;
+    text-align: center; }
   .steps .step-wrapper .step {
     display: flex;
     flex-direction: row;
     justify-content: center;
     max-width: 1200px;
     margin: 0 auto; }
+    .steps .step-wrapper .step ul {
+      list-style: none; }
+      .steps .step-wrapper .step ul li {
+        position: relative;
+        height: 125px;
+        padding: 0 0 10px 45px; }
+        .steps .step-wrapper .step ul li h3 {
+          color: #16193B;
+          font-size: 21px; }
+        .steps .step-wrapper .step ul li p {
+          color: #35478C; }
+        .steps .step-wrapper .step ul li:before {
+          content: '1';
+          border-radius: 50%;
+          width: 30px;
+          height: 30px;
+          background-color: #4E7AC7;
+          position: absolute;
+          top: 0;
+          left: 0;
+          text-align: center;
+          line-height: 29px; }
+        .steps .step-wrapper .step ul li:after {
+          width: 13px;
+          height: 92px;
+          background: url(../images/arrow.png) no-repeat center/cover;
+          bottom: -5px;
+          left: 8px;
+          content: '';
+          display: block;
+          position: absolute; }
+        .steps .step-wrapper .step ul li:last-child:after {
+          display: none; }
     .steps .step-wrapper .step img {
       margin: 0 10px;
       max-width: 571px;
       max-height: 428px; }
     .steps .step-wrapper .step .info {
       margin: 0 10px; }
-      .steps .step-wrapper .step .info h2 {
-        font-family: "Ubuntu", sans-serif;
-        border-bottom: 3px white solid;
-        padding-bottom: 15px; }
       .steps .step-wrapper .step .info p {
         text-align: justify;
         font-size: 18px; }
   .steps .step-2-wrapper {
     background: linear-gradient(rgba(38, 38, 43, 0.65), rgba(38, 38, 43, 0.75)), url("../images/sleeping-dog.jpg");
     background-attachment: fixed; }
-    .steps .step-2-wrapper p {
-      color: white; }
+    .steps .step-2-wrapper .cta {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 50px 0;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center; }
+      .steps .step-2-wrapper .cta h2 {
+        color: #ADD5F7; }
+      .steps .step-2-wrapper .cta p {
+        margin: 25px 0; }
+      .steps .step-2-wrapper .cta button {
+        background-color: #FF1744;
+        box-shadow: none;
+        border: none;
+        font-size: 22px;
+        font-family: "Ubuntu", sans-serif;
+        text-transform: uppercase;
+        border-radius: 2px;
+        transition: all 0.5s;
+        width: 200px;
+        margin: 25px 0; }
+        .steps .step-2-wrapper .cta button a {
+          display: block;
+          color: white;
+          text-decoration: none;
+          padding: 15px 25px; }
 
 .adoptable-pets {
   display: flex;

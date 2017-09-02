@@ -27,6 +27,10 @@ const userSchema = mongoose.Schema({
 		type: String,
 		required: true
 	},
+	zip: {
+		type: String,
+		required: true
+	},
 	pets: [{type: Schema.Types.ObjectId, ref: 'Pet'}]
 });
 

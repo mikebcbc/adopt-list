@@ -76,13 +76,15 @@ $('.register').submit(function(e) {
   e.preventDefault();
   var username = $("#register input.username").val();
   var password = $("#register input.password").val(); 
+  var zip = $("#register input.zip").val(); 
   $.ajax
   ({
     type: "POST",
     url: "/users",
     data: {
       username: username,
-      password: password
+      password: password,
+      zip: zip
     },
     dataType: 'json',
     success: function () {

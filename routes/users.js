@@ -7,7 +7,7 @@ const {User} = require('../models');
 
 /* POST new user */
 router.post('/', jsonParser, (req, res) => {
-  let {username, password} = req.body;
+  let {username, password, zip} = req.body;
   return User
   	.find({username})
   	.count()
@@ -25,7 +25,8 @@ router.post('/', jsonParser, (req, res) => {
   		return User
   			.create({
   				username,
-  				password: hash
+  				password: hash,
+          zip
   			})
   	})
   	.then(user => {

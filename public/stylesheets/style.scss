@@ -10,9 +10,10 @@ $cursive-font: 'Pacifico', sans-serif;
 }
 
 html {
-	background: #ACB6E5;
-	background: -webkit-linear-gradient(to right, #ACB6E5, #a1e4e1);
-	background: linear-gradient(to right, #ACB6E5, #a1e4e1);
+	// background: #ACB6E5;
+	// background: -webkit-linear-gradient(to right, #ACB6E5, #a1e4e1);
+	// background: linear-gradient(to right, #ACB6E5, #a1e4e1);
+	background: #ADD5F7;
 }
 
 body {
@@ -148,12 +149,61 @@ header {
 	display: flex;
 	flex-direction: column;
 	.step-wrapper {
+		h2 {
+			font-family: $heading-font;
+			border-bottom: 3px #16193B solid;
+			padding-bottom: 15px;
+			width: 70%;
+			margin: 30px auto;
+			color: #16193B;
+			text-align: center;
+		}
 		.step {
 			display: flex;
 			flex-direction: row;
 			justify-content: center;
 			max-width: 1200px;
 			margin: 0 auto;
+			ul {
+				list-style: none;
+				li {
+					position: relative;
+					height: 125px;
+					padding: 0 0 10px 45px;
+					h3 {
+						color: #16193B;
+						font-size: 21px;
+					}
+					p {
+						color: #35478C;
+					}
+					&:before {
+						content: '1';
+						border-radius: 50%;
+						width: 30px;
+						height: 30px;
+						background-color: #4E7AC7;
+						position: absolute;
+						top: 0;
+						left: 0;
+						text-align: center;
+						line-height: 29px;
+					}
+					&:after {
+				    width: 13px;
+				    height: 92px;
+				    background: url(../images/arrow.png) no-repeat center/cover;
+				    bottom: -5px;
+				    left: 8px;
+				    content: '';
+				    display: block;
+				    position: absolute;
+					}
+					&:last-child:after {
+						display: none;
+					}
+				}
+			}
 			img {
 				margin: 0 10px;
 				max-width: 571px;
@@ -161,11 +211,6 @@ header {
 			}
 			.info {
 				margin: 0 10px;
-				h2 {
-					font-family: $heading-font;
-					border-bottom: 3px white solid;
-   				padding-bottom: 15px;
-				}
 				p {
 					text-align: justify;
 					font-size: 18px;
@@ -176,8 +221,39 @@ header {
 	.step-2-wrapper {
 		background: linear-gradient(rgba(15%, 15%, 17%, 0.65), rgba(15%, 15%, 17%, 0.75)), url('../images/sleeping-dog.jpg');
 		background-attachment: fixed;
-		p {
-			color: white;
+		.cta {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			padding: 50px 0;
+			align-items: center;
+			max-width: 1200px;
+			margin: 0 auto;
+			text-align: center;
+			h2 {
+				color: #ADD5F7;
+			}
+			p {
+				margin: 25px 0;
+			}
+			button {
+				background-color: #FF1744;
+				box-shadow: none;
+				border: none;
+				font-size: 22px;
+				font-family: $heading-font;
+				text-transform: uppercase;
+				border-radius: 2px;
+				transition: all 0.5s;
+				width: 200px;
+				margin: 25px 0;
+				a {
+					display: block;
+					color: white;
+					text-decoration: none;
+					padding: 15px 25px;
+				}
+			}
 		}
 	}
 }
