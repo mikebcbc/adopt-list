@@ -36,7 +36,6 @@ router.post('/', jsonParser, (req, res) => {
   		if (err.reason === 'TakenError') {
   			return res.status(err.code).json(err);
   		}
-      console.log(req.body);
   		res.status(500).json({code: 500, message: 'Internal server error'});
   	});
 });

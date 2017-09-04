@@ -7,7 +7,6 @@ const {Pet, User} = require('../models');
 
 /* GET pets from list */
 router.get('/', passport.authenticate('jwt', {session: false}), function(req, res) {
-	console.log(req.user.id);
 	User.findById(req.user.id).populate('pets')
 	.then(pets => {
 		res.status(201).json(pets.pets);

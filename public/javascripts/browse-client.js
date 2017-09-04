@@ -128,7 +128,6 @@ function addToList() {
 
 function removeFromList() {
 	$('.adoptable-pets').on("click", ".remove-from-list", function(e) {
-		console.log(e);
 		e.preventDefault();
 		e.stopImmediatePropagation();
 		var pet = $(this).closest(".pet");

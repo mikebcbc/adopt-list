@@ -308,6 +308,11 @@ header {
   margin: 40px auto;
   border-radius: 5px;
   box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3); }
+  .login-form .login-error {
+    font-size: 18px;
+    color: #ff6565;
+    margin-bottom: 18px;
+    display: block; }
   .login-form .tab-group {
     list-style: none;
     padding: 0;

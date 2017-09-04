@@ -49,6 +49,11 @@ $('.login').submit(function(e) {
   login(username, password);
 });
 
+function incorrectLogin() {
+  $('.login-error').remove();
+  $('.login').prepend('<span class="login-error">The username or password is incorrect. Please try again.');
+}
+
 
 function login(username, password) { 
   $.ajax
@@ -61,10 +66,9 @@ function login(username, password) {
     },
     success: function (tkn) {
       if (!tkn.authToken) {
-        console.log('nope.');
-        // Notify user that account is incorrect
+        incorrectLogin();
       } else {
-        console.log(tkn);
+        $('.login-error').remove();
         localStorage.setItem('authToken', tkn.authToken);
         $(location).attr('href', BASE_URL + '/browse?auth_token=' + tkn.authToken);
       }

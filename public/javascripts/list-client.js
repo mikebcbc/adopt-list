@@ -42,7 +42,6 @@ function getListedPets() {
 		}
 	})
 	.done(function(pets) {
-		console.log(pets);
 		appendPets(pets);
 	})
 	.fail(function(err) {
