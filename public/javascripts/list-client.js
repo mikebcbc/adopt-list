@@ -14,8 +14,7 @@ var RESULT_TEMPLATE = (
 function renderPet(pet) {
 	var template = $(RESULT_TEMPLATE);
 	template.attr("data-id", pet._id);
-	template.attr("data-phone", pet.contactInfo.phone);
-	template.attr("data-email", pet.contactInfo.email);
+	template.find(".contact-shelter").attr('href', "mailto:" + pet.contactInfo.email);
 	if (pet.contactInfo.phone) {
 		template.find(".tool-tip").append('<div class="phone">Phone: ' + pet.contactInfo.phone + '</div>');
 	}

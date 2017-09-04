@@ -36,7 +36,8 @@ describe('List Tests', function() {
 			return User
 				.create({
 					username: 'tester@testing.com',
-					password: pass
+					password: pass,
+					zip: '12345'
 				})
 		})
 		.then(() => {

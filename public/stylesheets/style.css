@@ -3,7 +3,9 @@
   box-sizing: border-box; }
 
 html {
-  background: #f4f4f4; }
+  background: #ACB6E5;
+  background: -webkit-linear-gradient(to right, #ACB6E5, #a1e4e1);
+  background: linear-gradient(to right, #ACB6E5, #a1e4e1); }
 
 body {
   margin: 0;
@@ -40,8 +42,15 @@ header {
     padding: 0;
     list-style-type: none;
     justify-content: space-between; }
-    header nav ul li {
-      margin: 0 15px; }
+    header nav ul li a {
+      color: #555;
+      text-decoration: none;
+      text-transform: uppercase;
+      padding: 0 15px;
+      cursor: pointer; }
+    header nav ul li:nth-child(2) {
+      border-right: 2px solid #555;
+      border-left: 2px solid #555; }
 
 .overlay {
   background-color: rgba(0, 0, 0, 0.2);
@@ -115,69 +124,71 @@ header {
 .steps {
   display: flex;
   flex-direction: column; }
-  .steps .step-wrapper h2 {
-    font-family: "Ubuntu", sans-serif;
-    border-bottom: 3px #555 solid;
-    padding-bottom: 15px;
-    margin: 30px auto;
-    color: #555555; }
-  .steps .step-wrapper .step {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    max-width: 1300px;
-    margin: 0 auto; }
-    .steps .step-wrapper .step ul {
-      padding: 0;
-      list-style: none; }
-      .steps .step-wrapper .step ul li {
-        position: relative;
-        height: 125px;
-        padding: 0 0 10px 45px; }
-        .steps .step-wrapper .step ul li h3 {
-          color: #FF1744;
-          font-size: 21px; }
-        .steps .step-wrapper .step ul li p {
-          color: #555; }
-        .steps .step-wrapper .step ul li:before {
-          border-radius: 50%;
-          width: 30px;
-          height: 30px;
-          background-color: #FF1744;
-          color: white;
-          position: absolute;
-          top: 0;
-          left: 0;
-          text-align: center;
-          line-height: 31px; }
-        .steps .step-wrapper .step ul li:first-child:before {
-          content: '1'; }
-        .steps .step-wrapper .step ul li:nth-child(2):before {
-          content: '2'; }
-        .steps .step-wrapper .step ul li:nth-child(3):before {
-          content: '3'; }
-        .steps .step-wrapper .step ul li:nth-child(4):before {
-          content: '4'; }
-        .steps .step-wrapper .step ul li:after {
-          width: 13px;
-          height: 92px;
-          background: url(../images/arrow.png) no-repeat center/cover;
-          bottom: -5px;
-          left: 8px;
-          content: '';
-          display: block;
-          position: absolute; }
-        .steps .step-wrapper .step ul li:last-child:after {
-          display: none; }
-    .steps .step-wrapper .step img {
-      margin: 0 10px;
-      align-self: flex-end;
-      max-width: 100%; }
-    .steps .step-wrapper .step .info {
-      margin: 0 10px; }
-      .steps .step-wrapper .step .info p {
-        text-align: justify;
-        font-size: 18px; }
+  .steps .step-wrapper {
+    background: #f4f4f4; }
+    .steps .step-wrapper h2 {
+      font-family: "Ubuntu", sans-serif;
+      border-bottom: 3px #555 solid;
+      padding-bottom: 15px;
+      margin: 30px auto;
+      color: #555555; }
+    .steps .step-wrapper .step {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      max-width: 1300px;
+      margin: 0 auto; }
+      .steps .step-wrapper .step ul {
+        padding: 0;
+        list-style: none; }
+        .steps .step-wrapper .step ul li {
+          position: relative;
+          height: 125px;
+          padding: 0 0 10px 45px; }
+          .steps .step-wrapper .step ul li h3 {
+            color: #FF1744;
+            font-size: 21px; }
+          .steps .step-wrapper .step ul li p {
+            color: #555; }
+          .steps .step-wrapper .step ul li:before {
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            background-color: #FF1744;
+            color: white;
+            position: absolute;
+            top: 0;
+            left: 0;
+            text-align: center;
+            line-height: 31px; }
+          .steps .step-wrapper .step ul li:first-child:before {
+            content: '1'; }
+          .steps .step-wrapper .step ul li:nth-child(2):before {
+            content: '2'; }
+          .steps .step-wrapper .step ul li:nth-child(3):before {
+            content: '3'; }
+          .steps .step-wrapper .step ul li:nth-child(4):before {
+            content: '4'; }
+          .steps .step-wrapper .step ul li:after {
+            width: 13px;
+            height: 92px;
+            background: url(../images/arrow.png) no-repeat center/cover;
+            bottom: -5px;
+            left: 8px;
+            content: '';
+            display: block;
+            position: absolute; }
+          .steps .step-wrapper .step ul li:last-child:after {
+            display: none; }
+      .steps .step-wrapper .step img {
+        margin: 0 10px;
+        align-self: flex-end;
+        max-width: 100%; }
+      .steps .step-wrapper .step .info {
+        margin: 0 10px; }
+        .steps .step-wrapper .step .info p {
+          text-align: justify;
+          font-size: 18px; }
   .steps .step-2-wrapper {
     background: linear-gradient(rgba(38, 38, 43, 0.65), rgba(38, 38, 43, 0.75)), url("../images/sleeping-dog.jpg");
     background-attachment: fixed; }
@@ -216,11 +227,11 @@ header {
 .adoptable-pets {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between; }
+  justify-content: flex-start; }
   .adoptable-pets .pet {
     position: relative;
     cursor: pointer;
-    margin: 10px 0;
+    margin: 10px 20px;
     width: 345px;
     max-width: 100%;
     transition: height 1s;
@@ -401,7 +412,8 @@ header {
     text-align: center; }
 
 .contact-shelter {
-  position: relative; }
+  position: relative;
+  cursor: pointer; }
 
 .contact-shelter:hover .tool-tip {
   top: -70px;
@@ -458,8 +470,11 @@ header {
       margin: 0 auto; }
     .hero .triangle {
       height: 20%; }
-  .steps .step-wrapper .step {
+  .steps .step-wrapper .how-it-works {
     flex-direction: column-reverse;
+    padding: 10px 10px 0 10px; }
+  .steps .step-wrapper .cta {
+    flex-direction: column;
     padding: 10px 10px 0 10px; }
   .wrapper h2 {
     width: 100%;
