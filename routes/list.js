@@ -7,7 +7,6 @@ const {Pet, User} = require('../models');
 
 /* GET pets from list */
 router.get('/', passport.authenticate('jwt', {session: false}), function(req, res) {
-	console.log(req.user.id);
 	User.findById(req.user.id).populate('pets')
 	.then(pets => {
 		res.status(201).json(pets.pets);
@@ -20,6 +19,7 @@ router.get('/', passport.authenticate('jwt', {session: false}), function(req, re
 /* POST pet to list */
 router.post('/', passport.authenticate('jwt', {session: false}), (req, res) => {
 	Pet.create({
+		petId: req.body.petId,
 		name: req.body.name,
 		description: req.body.description,
 		image: req.body.image,

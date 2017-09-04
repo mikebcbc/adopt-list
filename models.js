@@ -5,6 +5,7 @@ const bcrypt = require('bcryptjs');
 mongoose.Promise = global.Promise;
 
 const petSchema = mongoose.Schema({
+	petId: {type: String, required: true},
 	name: {type: String, required: true},
 	description: {type: String, required: true},
 	image: {type: String, required: true},
@@ -23,6 +24,10 @@ const userSchema = mongoose.Schema({
 		unique: true
 	},
 	password: {
+		type: String,
+		required: true
+	},
+	zip: {
 		type: String,
 		required: true
 	},

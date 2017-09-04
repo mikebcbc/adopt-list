@@ -7,7 +7,7 @@ const {User} = require('../models');
 
 /* POST new user */
 router.post('/', jsonParser, (req, res) => {
-  let {username, password} = req.body;
+  let {username, password, zip} = req.body;
   return User
   	.find({username})
   	.count()
@@ -25,7 +25,8 @@ router.post('/', jsonParser, (req, res) => {
   		return User
   			.create({
   				username,
-  				password: hash
+  				password: hash,
+          zip
   			})
   	})
   	.then(user => {
@@ -35,7 +36,6 @@ router.post('/', jsonParser, (req, res) => {
   		if (err.reason === 'TakenError') {
   			return res.status(err.code).json(err);
   		}
-      console.log(req.body);
   		res.status(500).json({code: 500, message: 'Internal server error'});
   	});
 });
