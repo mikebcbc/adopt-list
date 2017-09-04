@@ -1,15 +1,16 @@
 const express = require('express');
 const rp = require('request-promise-native');
+const passport = require('passport');
 const router = express.Router();
 
 /* GET all pets */
-router.get('/', function(req, res) {
+router.get('/', passport.authenticate('jwt', {session: false}), function(req, res) {
 	const petOptions = {
 		uri: 'http://api.petfinder.com/pet.find',
 		qs: {
 			format: 'json',
 			key: process.env.DEV_KEY,
-			location: 34787
+			location: req.user.zip
 		},
 		json: true
 	}

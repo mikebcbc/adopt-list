@@ -1,5 +1,36 @@
 extends layout
 
 block content
-  h1= text
-  p Welcome to #{text}
+	.hero
+		.info
+			span Adopt List
+			p The organized way to adopt pets in need.
+			button
+				a(href="/login") Get Started
+		.triangle
+	.steps
+		.step-wrapper
+			.step.how-it-works
+				img(src="images/dog.png")
+				.info
+					h2 How It Works
+					ul
+						li 
+							h3 Enter your ZIP code
+							p Enter your ZIP on registration and we'll pull all the available adoptable pets in your area.
+						li
+							h3 View pets in your area
+							p View pet specifics, descriptions, and images of every specific pet!
+						li
+							h3 Save your favorites for later
+							p Add pets that interest you to your list, and narrow down your list until you find your new best friend!
+						li
+							h3 Contact the shelter
+							p Once you've found your friend, click contact shelter to send an email or call with one simple click!
+		.step-wrapper.step-2-wrapper
+			.cta
+				h2 READY TO FIND YOUR FOREVER FRIEND?
+				p Sign up for an account today and start browsing through available pets in your area.
+				button
+					a(href="/login") Get Started
+		.footer

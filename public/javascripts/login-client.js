@@ -49,6 +49,11 @@ $('.login').submit(function(e) {
   login(username, password);
 });
 
+function incorrectLogin() {
+  $('.login-error').remove();
+  $('.login').prepend('<span class="login-error">The username or password is incorrect. Please try again.');
+}
+
 
 function login(username, password) { 
   $.ajax
@@ -61,12 +66,11 @@ function login(username, password) {
     },
     success: function (tkn) {
       if (!tkn.authToken) {
-        console.log('nope.');
-        // Notify user that account is incorrect
+        incorrectLogin();
       } else {
-        console.log(tkn);
+        $('.login-error').remove();
         localStorage.setItem('authToken', tkn.authToken);
-        $(location).attr('href', 'http://localhost:3000/browse?auth_token=' + tkn.authToken);
+        $(location).attr('href', BASE_URL + '/browse?auth_token=' + tkn.authToken);
       }
     }
   });
@@ -76,13 +80,15 @@ $('.register').submit(function(e) {
   e.preventDefault();
   var username = $("#register input.username").val();
   var password = $("#register input.password").val(); 
+  var zip = $("#register input.zip").val(); 
   $.ajax
   ({
     type: "POST",
     url: "/users",
     data: {
       username: username,
-      password: password
+      password: password,
+      zip: zip
     },
     dataType: 'json',
     success: function () {
