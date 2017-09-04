@@ -13,7 +13,7 @@ html {
 	// background: #ACB6E5;
 	// background: -webkit-linear-gradient(to right, #ACB6E5, #a1e4e1);
 	// background: linear-gradient(to right, #ACB6E5, #a1e4e1);
-	background: #ADD5F7;
+	background: #f4f4f4;
 }
 
 body {
@@ -151,43 +151,54 @@ header {
 	.step-wrapper {
 		h2 {
 			font-family: $heading-font;
-			border-bottom: 3px #16193B solid;
+			border-bottom: 3px #555 solid;
 			padding-bottom: 15px;
-			width: 70%;
 			margin: 30px auto;
-			color: #16193B;
-			text-align: center;
+			color: #555555;
 		}
 		.step {
 			display: flex;
 			flex-direction: row;
 			justify-content: center;
-			max-width: 1200px;
+			max-width: 1300px;
 			margin: 0 auto;
 			ul {
+				padding: 0;
 				list-style: none;
 				li {
 					position: relative;
 					height: 125px;
 					padding: 0 0 10px 45px;
 					h3 {
-						color: #16193B;
+						color: #FF1744;
 						font-size: 21px;
 					}
 					p {
-						color: #35478C;
+						color: #555;
 					}
 					&:before {
-						content: '1';
 						border-radius: 50%;
 						width: 30px;
 						height: 30px;
-						background-color: #4E7AC7;
+						background-color: #FF1744;
+						color: white;
 						position: absolute;
 						top: 0;
 						left: 0;
 						text-align: center;
-						line-height: 29px;
+						line-height: 31px;
+					}
+					&:first-child:before {
+						content: '1';
+					}
+					&:nth-child(2):before {
+						content: '2';
+					}
+					&:nth-child(3):before {
+						content: '3';
+					}
+					&:nth-child(4):before {
+						content: '4';
 					}
 					&:after {
 				    width: 13px;
@@ -206,8 +217,8 @@ header {
 			}
 			img {
 				margin: 0 10px;
-				max-width: 571px;
-				max-height: 428px;
+				align-self: flex-end;
+				max-width: 100%;
 			}
 			.info {
 				margin: 0 10px;
@@ -231,10 +242,12 @@ header {
 			margin: 0 auto;
 			text-align: center;
 			h2 {
-				color: #ADD5F7;
+				color: white;
+				border-bottom: 3px solid white;
 			}
 			p {
-				margin: 25px 0;
+				margin: 20px 0;
+				color: white;
 			}
 			button {
 				background-color: #FF1744;
@@ -566,6 +579,14 @@ header {
 		}
 		.triangle {
 			height: 20%;
+		}
+	}
+	.steps {
+		.step-wrapper {
+			.step {
+				flex-direction: column-reverse;
+				padding: 10px 10px 0 10px;
+			}
 		}
 	}
 	.wrapper {
