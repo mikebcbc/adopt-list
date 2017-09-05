@@ -3,9 +3,7 @@
   box-sizing: border-box; }
 
 html {
-  background: #ACB6E5;
-  background: -webkit-linear-gradient(to right, #ACB6E5, #a1e4e1);
-  background: linear-gradient(to right, #ACB6E5, #a1e4e1); }
+  background: #f4f4f4; }
 
 body {
   margin: 0;
@@ -13,7 +11,7 @@ body {
   font-family: "Roboto", sans-serif; }
 
 h2 {
-  color: white;
+  color: #555555;
   font-weight: 400;
   font-size: 40px; }
 
@@ -22,7 +20,7 @@ h2 {
   width: 80%;
   padding-top: 15px;
   padding-bottom: 10px;
-  border-bottom: 2px solid white; }
+  border-bottom: 2px solid #555555; }
 
 header {
   display: flex;

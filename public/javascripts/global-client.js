@@ -1,4 +1,4 @@
-var BASE_URL = "https://adopt-list.herokuapp.com";
+var BASE_URL = "http://localhost:3000";
 
 $(function(){
 	if (localStorage.getItem('authToken')) {
